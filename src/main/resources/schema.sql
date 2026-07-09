@@ -32,4 +32,4 @@ CREATE TABLE BloqueHorario (
 
     FOREIGN KEY (nrc_id) REFERENCES NRC(id)
 
-)
+);
