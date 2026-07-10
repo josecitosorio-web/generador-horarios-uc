@@ -2,13 +2,14 @@ package com.example.genedor_horarios.horario;
 
 import org.springframework.stereotype.Service;
 
-import com.example.genedor_horarios.bloqueHorario.BloqueHorario;
+
+import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 
 @Service
 public class HorarioServiceImpl implements HorarioService {
 
     @Override
-    public boolean tieneCruce(BloqueHorario bloqueInsertado, BloqueHorario bloqueEvaluar) {
+    public boolean tieneCruce(BloqueHorarioEntity bloqueInsertado, BloqueHorarioEntity bloqueEvaluar) {
 
         if (bloqueInsertado.getDia() == bloqueEvaluar.getDia()) {
 

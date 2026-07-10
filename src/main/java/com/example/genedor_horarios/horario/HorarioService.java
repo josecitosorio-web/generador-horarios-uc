@@ -1,9 +1,10 @@
 package com.example.genedor_horarios.horario;
 
-import com.example.genedor_horarios.bloqueHorario.BloqueHorario;
+
+import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 
 public interface HorarioService {
     
-    boolean tieneCruce (BloqueHorario bloqueInsertado, BloqueHorario bloqueEvaluar);
+    boolean tieneCruce (BloqueHorarioEntity bloqueInsertado, BloqueHorarioEntity bloqueEvaluar);
 
 }
