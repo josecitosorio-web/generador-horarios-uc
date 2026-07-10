@@ -34,8 +34,9 @@ public class CursoEntity {
     public CursoEntity () {}
 
 
-    public CursoEntity (String nombre, Integer creditos) {
+    public CursoEntity (String codigo, String nombre, Integer creditos) {
 
+        this.codigo = codigo;
         this.nombre = nombre;
         this.creditos = creditos;
 

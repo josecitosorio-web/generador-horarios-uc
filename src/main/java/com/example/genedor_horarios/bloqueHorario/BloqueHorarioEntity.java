@@ -50,6 +50,9 @@ public class BloqueHorarioEntity {
 
     }
 
+    public Long getId () {return this.id;}
+    public void setId (Long id) {this.id = id;}
+
     public DiaSemana getDia () { return this.dia;}
     public void setDia (DiaSemana dia) {this.dia = dia;}
 
