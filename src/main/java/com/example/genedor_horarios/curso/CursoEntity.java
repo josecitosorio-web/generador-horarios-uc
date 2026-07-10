@@ -19,6 +19,9 @@ public class CursoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "codigo")
+    private String codigo;
+
     @Column(name = "nombre")
     private String nombre;
 
@@ -40,6 +43,9 @@ public class CursoEntity {
 
     public Long getId() { return this.id; }
     public void setId(Long id) { this.id = id; }
+
+    public String getCodigo() {return this.codigo;}
+    public void setCodigo(String codigo) { this.codigo = codigo;}
 
     public String getNombre() {return this.nombre;}
     public Integer getCreditos() {return this.creditos;}
