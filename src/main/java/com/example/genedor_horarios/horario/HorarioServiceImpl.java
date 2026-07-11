@@ -1,5 +1,6 @@
 package com.example.genedor_horarios.horario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -8,16 +9,19 @@ import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioRepository;
 import com.example.genedor_horarios.nrc.NrcEntity;
 import com.example.genedor_horarios.nrc.NrcRepository;
+import com.example.genedor_horarios.nrc.NrcService;
 
 @Service
 public class HorarioServiceImpl implements HorarioService {
 
     private BloqueHorarioRepository bloqueHorarioRepository;
     private NrcRepository nrcRepository;
+    private NrcService nrcService;
 
-    public HorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository) {
+    public HorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository, NrcService nrcService) {
         this.bloqueHorarioRepository = bloqueHorarioRepository;
         this.nrcRepository = nrcRepository;
+        this.nrcService = nrcService;
     }
 
     @Override
@@ -79,6 +83,43 @@ public class HorarioServiceImpl implements HorarioService {
         }
 
         return true;
+
+    }
+
+    @Override
+    public void generarHorariosElegibles (List<Long> cursosId , List <BloqueHorarioEntity> horarioCandidato, List<List<BloqueHorarioEntity>> listaHorariosElegidos) {
+
+        if(cursosId.isEmpty()) {
+
+            listaHorariosElegidos.add(new ArrayList<>(horarioCandidato));
+
+            return;
+
+        }
+
+        List<NrcEntity> nrcElegibles = nrcService.nrcElegibles(cursosId.get(0),true);
+
+        for(NrcEntity nrcElegible : nrcElegibles) {
+
+            if(esCompatible(nrcElegible.getCodigo(), horarioCandidato)) {
+
+                List<BloqueHorarioEntity> bloquesSeleccionados = obtenerTodosLosBloquesPorNrc(nrcElegible.getCodigo());
+
+                horarioCandidato.addAll(bloquesSeleccionados);
+
+                List<Long> cursosPendientes = new ArrayList<>(cursosId);
+
+                cursosPendientes.remove(0);
+
+                generarHorariosElegibles(cursosPendientes, horarioCandidato, listaHorariosElegidos);
+
+                horarioCandidato.removeAll(bloquesSeleccionados);
+
+            }
+
+            
+
+        }
 
     }
 
