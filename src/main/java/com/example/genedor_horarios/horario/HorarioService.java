@@ -9,5 +9,6 @@ public interface HorarioService {
     
     boolean tieneCruce (BloqueHorarioEntity bloqueInsertado, BloqueHorarioEntity bloqueEvaluar);
     List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc);
+    boolean esCompatible (String nrc , List<BloqueHorarioEntity> horarioActual);
 
 }

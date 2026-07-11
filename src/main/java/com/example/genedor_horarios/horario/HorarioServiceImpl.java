@@ -58,4 +58,28 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
+
+    @Override
+    public boolean esCompatible (String nrc , List<BloqueHorarioEntity> horarioActual) {
+
+        List<BloqueHorarioEntity> bloquesAEvaluar = obtenerTodosLosBloquesPorNrc(nrc);
+
+        for(BloqueHorarioEntity bloqueInsertado : horarioActual) {
+
+            for(BloqueHorarioEntity bloqueAEvaluar : bloquesAEvaluar) {
+
+                if(tieneCruce(bloqueInsertado, bloqueAEvaluar)) {
+
+                    return false;
+
+                }   
+
+            }
+
+        }
+
+        return true;
+
+    }
+
 }
