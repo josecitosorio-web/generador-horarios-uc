@@ -5,5 +5,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface NrcRepository extends JpaRepository<NrcEntity, Long> {
+
+    NrcEntity findByCodigo (String codigo);
     
 }
