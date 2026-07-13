@@ -11,5 +11,6 @@ public interface HorarioService {
     List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc);
     boolean esCompatible (String nrc , List<BloqueHorarioEntity> horarioActual);
     void generarHorariosElegibles (List<Long> cursosId , List <BloqueHorarioEntity> horarioCndidato, List<List<BloqueHorarioEntity>> listaHorariosElegidos);
+    int calcularHoraMuertas (List<BloqueHorarioEntity> horario);
 
 }
