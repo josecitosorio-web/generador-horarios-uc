@@ -45,7 +45,7 @@ public class PruebHorarioRunner implements CommandLineRunner {
 
         for(int i = 0; i < 1 ; i++) {
 
-            
+            // mejoramiento del codigo
             
             System.out.println("HORARIO NUMERO :" + (i));
             
