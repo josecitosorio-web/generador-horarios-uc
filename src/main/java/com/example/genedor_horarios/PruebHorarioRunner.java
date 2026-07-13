@@ -40,6 +40,8 @@ public class PruebHorarioRunner implements CommandLineRunner {
 
         System.out.println("TOTAL DE HORARIOS ENCONTRADOS :" + listaHorariosElegidos.size());
 
+        horarioService.ordenarPorRanking(listaHorariosElegidos);
+
 
         for(int i = 0; i < 1 ; i++) {
 

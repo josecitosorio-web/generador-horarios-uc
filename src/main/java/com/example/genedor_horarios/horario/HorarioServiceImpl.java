@@ -1,7 +1,6 @@
 package com.example.genedor_horarios.horario;
 
 import java.time.Duration;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -165,6 +164,15 @@ public class HorarioServiceImpl implements HorarioService {
         
 
         return puntaje;
+
+    }
+
+    @Override
+    public List<List<BloqueHorarioEntity>> ordenarPorRanking (List<List<BloqueHorarioEntity>> horarios) {
+
+        horarios.sort(Comparator.comparing(horario -> calcularHoraMuertas(horario)));
+
+        return horarios;
 
     }
 
