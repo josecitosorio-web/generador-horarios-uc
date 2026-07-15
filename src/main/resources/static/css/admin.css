@@ -70,7 +70,7 @@ main {
 
     padding: 4% 2%;
 
-    
+
 }
 
 .sidebar ul li a {
@@ -84,7 +84,7 @@ main {
     text-decoration: none;
     color: white;
     border-radius: 5px;
-    
+
     transition: all 0.3s;
 
 }
@@ -106,9 +106,6 @@ main {
 
 /* diseño del main */
 
-
-/* diseño de la seccion de bienvenida */
-
 .dashboard-main {
     flex: 1;
 
@@ -123,248 +120,95 @@ main {
 
 }
 
-.bienvenida-seccion {
-    display: flex;
-}
+/* diseño de los botones por defecto */
 
-.saludo {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-
-    gap: 2em;
-
-    padding: 2em 3em;
-
-    font-size: 0.9em;
-    
-
-}
-
-.img-portada {
-    flex: 1;
-}
-
-.img-portada img {
-    width: 27em;
-    height: auto;
-}
-
-
-/* diseñod e la seccion de metricas */
-.metricas-seccion {
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    padding-top: 2em;
+    padding: 0.8em 1.5em;
+    background-color: #442893;
 
-    gap: 1em;
-
-}
-
-.metrica {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    padding: 1em;
-
-    gap: 1em;
-    
-
-    border: 1px solid #e8eaef;
-    border-radius: 5px;
-    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.3);
-}
-
-.metrica img {
-
-    width: 2em;
-    height: auto;
-
-}
-
-.metrica .icono {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0.7em;
-
-    border-radius: 100%;
-
-}
-
-.curso .icono {
-
-    background-color: #5f35b8;
-
-}
-
-.nrc .icono {
-
-    background-color: #0f5ce6;
-
-}
-
-.bloque .icono {
-
-    background-color: #fd7d07;
-
-}
-
-.horario .icono {
-
-    background-color: #21953f;
-
-}
-
-
-/* diseño de la seccion del acceso rapido */
-
-.acceso-rapido-seccion {
-
-    display: flex;
-    flex-direction: column;
-    padding: 1em;
-
-    gap: 1em;
-
-    border: 4px solid #eceff3;
-    border-radius: 5px;
-
-}
-
-.acceso-rapido-seccion h3 {
-
-    font-size: 1em;
-
-}
-
-.accesos {
-
-    display: flex;
-    align-items: center;
-    gap: 1em;
-
-}
-
-.acceso {
-
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5em;
-    border-radius: 0.7em;
-    
-
-    padding: 1em;
-
-}
-
-.acceso:nth-child(1) {background-color: #f3edfa; border: 3px solid #e5e1f2;}
-.acceso:nth-child(2) {background-color: #f0f5fe; border: 3px solid #dde5f5;}
-.acceso:nth-child(3) {background-color: #fef6ea; border: 3px solid #fbead6;}
-.acceso:nth-child(4) {background-color: #eef7f0; border: 3px solid #e6f2e8;}
-
-.acceso img {
-
-    width: 2em;
-    height: auto;
-
-}
-
-.informacion {
-    display: flex;
-    flex: 1;
-
-    gap: 1em;
-
-
-}
-
-.btn {
-    flex: 1;
-}
-
-.informacion .imagen {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 1em;
-
-    
-    border-radius: 50%;
-
-}
-
-.cursos .imagen {background-color: #5e37b4;}
-.nrc .imagen {background-color: #125ada;}
-.bloques .imagen {background-color: #fe7e0b;}
-.horario .imagen {background-color: #22953f;}
-
-.informacion .info {
-
-    flex: 1;
-    
-
-}
-
-.informacion .info h4 {
-
-    font-size: 1em;
-
-}   
-
-.informacion .info p {
-
-    font-size: 0.7em;
-
-}  
-
-.acceso .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    
-}
-
-.acceso .btn a {
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0.3em;
-    width: 100%;
-
-
+    border: none;
     border-radius: 0.5em;
-
-    transition: all 0.3s;
-
-    text-decoration: none;
     color: white;
 
+    margin-top: 1.6em;
+
+    transition: all 0.5s;
+
+    cursor: pointer;
+
 }
 
-.acceso .btn a:hover {
+.button img {
 
-    
+    width: 1.6em;
+    height: auto;
+
+}
+
+.button:hover {
     transform: scale(1.05);
+}
+
+/* diseño de la tabla */
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 1em 0em;
 
 }
 
-.cursos .btn a {background-color: #5e37b4;}
-.nrc .btn a{background-color: #125ada;}
-.bloques .btn a{background-color: #fe7e0b;}
-.horario .btn a{background-color: #22953f;}
+td {
+    border-top: 3px solid #f0f0f2;
+}
 
+.acciones {
+    display: flex;
 
+    gap: 1em;
 
+}
 
+/* diseño de botones de acciones */
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    text-decoration: none;
+
+    font-weight: bold;
+    color: white;
+
+    padding: 0.4em 2em;
+
+    background-color: green;
+    border-radius: 0.5em;
+
+    transition: all 0.5s;
+}
+
+.boton:hover {
+    transform: scale(1.05);
+}
+
+.boton img {
+    width: 1.2em;
+    height: auto;
+}
+
+.editar {
+    background-color: #0f57e4;
+}
+
+.borrar {
+    background-color: #ce3436;
+}
