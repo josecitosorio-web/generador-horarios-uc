@@ -1,0 +1,22 @@
+.espacio form {
+    display: flex;
+    gap: 1em;
+}
+
+.subdivision {
+    display: flex;
+    gap: 1em;
+}
+
+.bloques,.horario {
+    flex: 1;
+    
+}
+
+tbody {
+    text-align: center;
+}
+
+tbody tr td:nth-child(1) {
+    text-align: left;
+}
