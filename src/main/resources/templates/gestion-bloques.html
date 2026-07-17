@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/images/logo.png">
+    <link rel="stylesheet" href="../static/css/admin.css">
+    <link rel="stylesheet" href="../static/css/bloques.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>KAIROS - Bloques</title>
+</head>
+
+<body>
+
+    <div class="banner">
+
+        <div class="logo">
+
+            <img src="../static/images/logo.png" alt="imagen del logo de la marca">
+            <p>Kairos</p>
+            <p>|</p>
+            <p>La forma inteligente de construir tu horario</p>
+
+        </div>
+
+    </div>
+
+    <main>
+
+        <div class="sidebar">
+
+            <ul>
+                <li><a class="inicio btn" href="#"><img src="../static/images/casa.png" alt="">Inicio</a></li>
+                <li><a class="cursos btn" href="#"><img src="../static/images/libro.png" alt="">Cursos</a></li>
+                <li><a class="nrc btn" href="#"><img src="../static/images/etiqueta.png" alt="">NRC</a></li>
+                <li><a class="horario btn" href="#"><img src="../static/images/calendario.png" alt="">Bloques
+                        Horario</a></li>
+                <li><a class="generador btn" href="#"><img src="../static/images/rayo.png" alt="">Generar Horarios</a>
+                </li>
+            </ul>
+
+        </div>
+        <div class="dashboard-main">
+
+            <div class="titulo">
+
+                <h1>Gestión de Bloques Horarios</h1>
+                <p>Administra lo bloques de horario de cada NRC</p>
+
+            </div>
+            <div class="nuevo-bloque espacio">
+
+                <h2>Registrar Bloque Horario</h2>
+
+                <form>
+
+
+                    <div class="input">
+
+                        <label for="NRC">NRC</label>
+                        <select name="" id="NRC">
+                            <option value="">Seleccionar</option>
+                        </select>
+
+                    </div>
+
+                    <div class="input">
+
+                        <label for="Dia">Día</label>
+                        <select name="" id="Dia">
+                            <option value="">Seleccionar día</option>
+                        </select>
+
+                    </div>
+
+                    <div class="input">
+
+                        <label for="Hora_inicio">Hora Inicio</label>
+                        <input type="time" id="Hora_inicio">
+
+                    </div>
+                    <div class="input">
+
+                        <label for="Hora_fin">Hora Fin</label>
+                        <input type="time" id="Hora_fin">
+
+                    </div>
+                    <div class="input">
+
+                        <label for="Aula">Aula</label>
+                        <input type="text" id="Aula" placeholder="Ej: H103">
+
+                    </div>
+
+                    <button class="button" type="submit"><img src="../static/images/agregar.png" alt="">Guardar
+                        Bloque</button>
+
+
+
+                </form>
+
+            </div>
+            <div class="subdivision">
+
+                <div class="bloques espacio">
+
+                    <h2>Lista de Bloques Horarios</h2>
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>NRC</th>
+                                <th>Dia</th>
+                                <th>Hora Inicio</th>
+                                <th>Hora Fin</th>
+                                <th>Aula</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>28611</td>
+                                <td>Martes</td>
+                                <td>08:00 am</td>
+                                <td>09:29 am</td>
+                                <td>H103</td>
+                                <td class="acciones"><a href="#" class="boton editar"><img
+                                            src="../static/images/editar.png" alt=""></a> <a href="#"
+                                        class="boton borrar"><img src="../static/images/eliminar.png" alt=""></a></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+                <div class="horario espacio">
+
+                    <h2>Vista Semanal del NRC</h2>
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Hora</th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miercoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sábado</th>
+                                <th>Domingo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>07:00 - 08:29</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>08:40 - 10:09</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>10:20 - 11:49</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>12:00 - 13:29</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>14:00 - 15:29</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>15:40 - 17:09</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>17:20 - 18:49</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>19:00 - 20:29</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                                
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

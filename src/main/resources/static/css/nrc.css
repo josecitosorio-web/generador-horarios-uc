@@ -1,0 +1,16 @@
+.nuevo-nrc form {
+
+    display: flex;
+    flex-direction: column;
+    
+
+    
+    gap: 1em;
+
+}
+
+.fila-form {
+    display: flex;
+    gap: 1em;
+}
+

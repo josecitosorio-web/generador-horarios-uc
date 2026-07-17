@@ -1,0 +1,246 @@
+
+.bienvenida-seccion {
+    display: flex;
+}
+
+.saludo {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+
+    gap: 2em;
+
+    padding: 2em 3em;
+
+    font-size: 0.9em;
+    
+
+}
+
+.img-portada {
+    flex: 1;
+}
+
+.img-portada img {
+    width: 27em;
+    height: auto;
+}
+
+
+/* diseñod e la seccion de metricas */
+.metricas-seccion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 2em;
+
+    gap: 1em;
+
+}
+
+.metrica {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+
+    gap: 1em;
+    
+
+    border: 1px solid #e8eaef;
+    border-radius: 5px;
+    box-shadow: 2px 2px 15px 2px rgba(0, 0, 0, 0.3);
+}
+
+.metrica img {
+
+    width: 2em;
+    height: auto;
+
+}
+
+.metrica .icono {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.7em;
+
+    border-radius: 100%;
+
+}
+
+.curso .icono {
+
+    background-color: #5f35b8;
+
+}
+
+.nrc .icono {
+
+    background-color: #0f5ce6;
+
+}
+
+.bloque .icono {
+
+    background-color: #fd7d07;
+
+}
+
+.horario .icono {
+
+    background-color: #21953f;
+
+}
+
+
+/* diseño de la seccion del acceso rapido */
+
+.acceso-rapido-seccion {
+
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+
+    gap: 1em;
+
+    border: 4px solid #eceff3;
+    border-radius: 5px;
+
+}
+
+.acceso-rapido-seccion h3 {
+
+    font-size: 1em;
+
+}
+
+.accesos {
+
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+}
+
+.acceso {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    border-radius: 0.7em;
+    
+
+    padding: 1em;
+
+}
+
+.acceso:nth-child(1) {background-color: #f3edfa; border: 3px solid #e5e1f2;}
+.acceso:nth-child(2) {background-color: #f0f5fe; border: 3px solid #dde5f5;}
+.acceso:nth-child(3) {background-color: #fef6ea; border: 3px solid #fbead6;}
+.acceso:nth-child(4) {background-color: #eef7f0; border: 3px solid #e6f2e8;}
+
+.acceso img {
+
+    width: 2em;
+    height: auto;
+
+}
+
+.informacion {
+    display: flex;
+    flex: 1;
+
+    gap: 1em;
+
+
+}
+
+.btn {
+    flex: 1;
+}
+
+.informacion .imagen {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1em;
+
+    
+    border-radius: 50%;
+
+}
+
+.cursos .imagen {background-color: #5e37b4;}
+.nrc .imagen {background-color: #125ada;}
+.bloques .imagen {background-color: #fe7e0b;}
+.horario .imagen {background-color: #22953f;}
+
+.informacion .info {
+
+    flex: 1;
+    
+
+}
+
+.informacion .info h4 {
+
+    font-size: 1em;
+
+}   
+
+.informacion .info p {
+
+    font-size: 0.7em;
+
+}  
+
+.acceso .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+.acceso .btn a {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.3em;
+    width: 100%;
+
+
+    border-radius: 0.5em;
+
+    transition: all 0.3s;
+
+    text-decoration: none;
+    color: white;
+
+}
+
+.acceso .btn a:hover {
+
+    
+    transform: scale(1.05);
+
+}
+
+.cursos .btn a {background-color: #5e37b4;}
+.nrc .btn a{background-color: #125ada;}
+.bloques .btn a{background-color: #fe7e0b;}
+.horario .btn a{background-color: #22953f;}
+
+
+
+
+

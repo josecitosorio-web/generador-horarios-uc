@@ -1,0 +1,269 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1%;
+
+    padding: 10px 4px;
+
+
+    background-color: #0c1520;
+    color: white;
+}
+
+.logo img {
+    width: 5%;
+    height: auto;
+}
+
+main {
+    display: flex;
+
+    width: 100%;
+    min-height: 100vh;
+
+}
+
+
+/* diseño del sidebar */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1%;
+
+    width: 20em;
+
+
+
+    background-color: #16212f;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: auto;
+
+
+
+    list-style: none;
+
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+
+    padding: 4% 2%;
+
+
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+
+    padding: 6% 2%;
+
+    gap: 5%;
+
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+
+    transition: all 0.3s;
+
+}
+
+.sidebar ul li a img {
+
+    width: 10%;
+    height: auto;
+
+}
+
+.sidebar ul li a:hover {
+
+    background-color: #452894;
+
+    transform: scale(1.05);
+
+}
+
+/* diseño del main */
+
+.dashboard-main {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.5em;
+
+    padding: 2%;
+    padding-right: 5%;
+
+
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    font-size: 0.9em;
+}
+
+.titulo p {
+    font-size: 1.11em;
+}
+
+.espacio {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    padding: 1.1em;
+
+    font-size: 0.8em;
+
+    border: 3px solid #e8eaef;
+    
+    box-shadow: 2px 2px 10px 2px #e8eaef;
+    border-radius: 1em;
+
+}
+
+.input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.8em;
+
+}
+
+.input input {
+
+    padding: 0.7em;
+
+    border-radius: 0.5em;
+    border: 3px solid #ebecef;
+
+}
+
+.input select {
+
+    padding: 0.7em;
+
+    border-radius: 0.5em;
+    border: 3px solid #ebecef;
+
+}
+/* diseño de los botones por defecto */
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.8em 1.5em;
+    background-color: #442893;
+
+    border: none;
+    border-radius: 0.5em;
+    color: white;
+
+    margin-top: 1.6em;
+
+    transition: all 0.5s;
+
+    cursor: pointer;
+
+}
+
+.button img {
+
+    width: 1.6em;
+    height: auto;
+
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+/* diseño de la tabla */
+
+table {
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 1em 0em;
+
+}
+
+td {
+    border-top: 3px solid #f0f0f2;
+}
+
+.acciones {
+    display: flex;
+
+    gap: 1em;
+
+}
+
+/* diseño de botones de acciones */
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    font-weight: bold;
+    color: white;
+
+    padding: 0.4em 2em;
+
+    background-color: green;
+    border-radius: 0.5em;
+
+    transition: all 0.5s;
+}
+
+.boton:hover {
+    transform: scale(1.05);
+}
+
+.boton img {
+    width: 1.2em;
+    height: auto;
+}
+
+.editar {
+    background-color: #0f57e4;
+}
+
+.borrar {
+    background-color: #ce3436;
+}
