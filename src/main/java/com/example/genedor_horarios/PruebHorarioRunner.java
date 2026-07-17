@@ -1,70 +1,70 @@
-package com.example.genedor_horarios;
+// package com.example.genedor_horarios;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.Arrays;
+// import java.util.List;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+// import org.springframework.boot.CommandLineRunner;
+// import org.springframework.stereotype.Component;
 
-import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
-import com.example.genedor_horarios.horario.HorarioService;
+// import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
+// import com.example.genedor_horarios.horario.HorarioService;
 
-@Component
-public class PruebHorarioRunner implements CommandLineRunner {
+// @Component
+// public class PruebHorarioRunner implements CommandLineRunner {
 
-    private HorarioService horarioService;
-
-
-    public PruebHorarioRunner (HorarioService horarioService) {
-
-        this.horarioService = horarioService;
-
-    }
-
-    @Override
-    public void run(String... args) {
-
-        // definimos nuestras listas
-
-        List<Long> cursos = Arrays.asList(1L,2L,3L,4L,5L,6L);
-
-        List <BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
-
-        List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
+//     private HorarioService horarioService;
 
 
-        // ejecutamos el metodo a evaluar
+//     public PruebHorarioRunner (HorarioService horarioService) {
 
-        horarioService.generarHorariosElegibles(cursos, horarioCandidato, listaHorariosElegidos);
+//         this.horarioService = horarioService;
 
-        System.out.println("TOTAL DE HORARIOS ENCONTRADOS :" + listaHorariosElegidos.size());
+//     }
 
-        horarioService.ordenarPorRanking(listaHorariosElegidos);
+//     @Override
+//     public void run(String... args) {
+
+//         // definimos nuestras listas
+
+//         List<Long> cursos = Arrays.asList(1L,2L,3L,4L,5L,6L);
+
+//         List <BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
+
+//         List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
 
 
-        for(int i = 0; i < 1 ; i++) {
+//         // ejecutamos el metodo a evaluar
 
-            // mejoramiento del codigo
+//         horarioService.generarHorariosElegibles(cursos, horarioCandidato, listaHorariosElegidos);
+
+//         System.out.println("TOTAL DE HORARIOS ENCONTRADOS :" + listaHorariosElegidos.size());
+
+//         horarioService.ordenarPorRanking(listaHorariosElegidos);
+
+
+//         for(int i = 0; i < 1 ; i++) {
+
+//             // mejoramiento del codigo
             
-            System.out.println("HORARIO NUMERO :" + (i));
+//             System.out.println("HORARIO NUMERO :" + (i));
             
 
-            List<BloqueHorarioEntity> horarios = listaHorariosElegidos.get(i);
+//             List<BloqueHorarioEntity> horarios = listaHorariosElegidos.get(i);
 
-            for(BloqueHorarioEntity horario : horarios) {
+//             for(BloqueHorarioEntity horario : horarios) {
 
-                System.out.println("CURSO :" + horario.getNrc().getCurso().getNombre());
-                System.out.println("NRC : " + horario.getNrc().getCodigo());
-                System.out.println("Día : " + horario.getDia());
-                System.out.println("Hora: " +horario.getHoraInicio() + " - " + horario.getHoraFin());
+//                 System.out.println("CURSO :" + horario.getNrc().getCurso().getNombre());
+//                 System.out.println("NRC : " + horario.getNrc().getCodigo());
+//                 System.out.println("Día : " + horario.getDia());
+//                 System.out.println("Hora: " +horario.getHoraInicio() + " - " + horario.getHoraFin());
 
 
-            }
+//             }
 
-        }
+//         }
         
 
-    }
+//     }
     
-}
+// }
