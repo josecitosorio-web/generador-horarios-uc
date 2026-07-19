@@ -1,5 +1,7 @@
 package com.example.genedor_horarios.nrc;
 
+import com.example.genedor_horarios.curso.Curso;
+
 public class Nrc {
     
     private Long id;
@@ -7,15 +9,20 @@ public class Nrc {
     private String docente;
     private String modalidad;
     private Boolean esPrincipal;
+    private Curso curso;
+    private Nrc nrcVinculado;
 
     public Nrc () {}
 
-    public Nrc (String codigo, String docente, String modalidad, Boolean esPrincipal) {
+    public Nrc (Long id, String codigo, String docente, String modalidad, Boolean esPrincipal, Curso curso, Nrc nrcVinculado) {
 
+        this.id = id;
         this.codigo = codigo;
         this.docente = docente;
         this.modalidad = modalidad;
         this.esPrincipal = esPrincipal;
+        this.curso = curso;
+        this.nrcVinculado = nrcVinculado;
 
     }
 
@@ -33,5 +40,11 @@ public class Nrc {
 
     public Boolean getEsPrincipal() {return this.esPrincipal;}
     public void setEsPrincipal(Boolean esPrincipal) { this.esPrincipal = esPrincipal;}
+
+    public Curso getCurso() {return this.curso;}
+    public void setCurso(Curso curso) {this.curso = curso;}
+
+    public Nrc getNrcVinculado() {return this.nrcVinculado;}
+    public void setNrcVinculado(Nrc nrcVinculado) {this.nrcVinculado = nrcVinculado;}
 
 }

@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../static/images/logo.png">
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="stylesheet" href="../static/css/nrc.css">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/nrc.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -20,7 +20,7 @@
 
         <div class="logo">
 
-            <img src="../static/images/logo.png" alt="imagen del logo de la marca">
+            <img src="/images/logo.png" alt="imagen del logo de la marca">
             <p>Kairos</p>
             <p>|</p>
             <p>La forma inteligente de construir tu horario</p>
@@ -34,12 +34,12 @@
         <div class="sidebar">
 
             <ul>
-                <li><a class="inicio btn" href="#"><img src="../static/images/casa.png" alt="">Inicio</a></li>
-                <li><a class="cursos btn" href="#"><img src="../static/images/libro.png" alt="">Cursos</a></li>
-                <li><a class="nrc btn" href="#"><img src="../static/images/etiqueta.png" alt="">NRC</a></li>
-                <li><a class="horario btn" href="#"><img src="../static/images/calendario.png" alt="">Bloques
+                <li><a class="inicio btn" href="#"><img src="/images/casa.png" alt="">Inicio</a></li>
+                <li><a class="cursos btn" href="#"><img src="/images/libro.png" alt="">Cursos</a></li>
+                <li><a class="nrc btn" href="#"><img src="/images/etiqueta.png" alt="">NRC</a></li>
+                <li><a class="horario btn" href="#"><img src="/images/calendario.png" alt="">Bloques
                         Horario</a></li>
-                <li><a class="generador btn" href="#"><img src="../static/images/rayo.png" alt="">Generar Horarios</a>
+                <li><a class="generador btn" href="#"><img src="/images/rayo.png" alt="">Generar Horarios</a>
                 </li>
             </ul>
 
@@ -48,7 +48,7 @@
 
             <div class="titulo">
 
-                <h1>Gestión de Cursos</h1>
+                <h1>Gestión de NRC</h1>
                 <p>Administra los NRC y su información general</p>
 
             </div>
@@ -56,47 +56,51 @@
 
                 <h2>Registrar NRC</h2>
 
-                <form>
+                <form th:action="@{/nrc/registrar}" method="post">
+
+                    <input type="hidden" name="id" th:value="${nrc != null ? nrc.id : ''}">
+
                     <div class="fila-form">
 
                         <div class="input">
 
                             <label for="codigo">Código</label>
-                            <input type="text" id="codigo" placeholder="Ej: 28611">
+                            <input type="text" id="codigo" name="codigo" placeholder="Ej: 28611" th:value="${ nrc != null ? nrc.codigo : ''}">
 
                         </div>
                         <div class="input">
 
                             <label for="Curso">Curso</label>
-                            <select name="" id="Curso">
-                                <option value="">Seleccionar Curso</option>
+                            <select name="cursoId" id="Curso">
+                                <option value="" th:selected="${nrc == null}">Seleccionar Curso</option>
+                                <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nombre}" th:selected="${nrc.curso != null and curso.id == nrc.curso.id}"></option>
                             </select>
 
                         </div>
                         <div class="input">
 
                             <label for="docente">Docente</label>
-                            <input type="text" id="docente" placeholder="Ej: Juan Perez">
+                            <input type="text" id="docente" name="docente" placeholder="Ej: Juan Perez" th:value="${nrc != null ? nrc.docente : ''}">
 
                         </div>
                         <div class="input">
 
-                            <label for="modealidad">Modalidad</label>
-                            <select name="" id="Modalidad">
-                                <option value="">Seleccionar</option>
-                                <option value="">Presencial</option>
-                                <option value="">Virtual</option>
-                                <option value="">Hibrida</option>
+                            <label for="modalidad">Modalidad</label>
+                            <select name="modalidad" id="modalidad">
+                                <option value="" th:selected="${nrc == null}" >Seleccionar</option>
+                                <option value="Fisica" th:selected="${nrc.modalidad == 'Fisica'}">Fisica</option>
+                                <option value="Remota" th:selected="${nrc.modalidad == 'Remota'}">Remota</option>
+                                <option value="Hibrida" th:selected="${nrc.modalidad == 'Hibrida'}">Hibrida</option>
                             </select>
 
                         </div>
                         <div class="input">
 
                             <label for="principal">¿Es Principal?</label>
-                            <select name="" id="Modalidad">
-                                <option value="">Seleccionar</option>
-                                <option value="">Si</option>
-                                <option value="">No</option>
+                            <select name="esPrincipal" id="principal">
+                                <option value="" th:selected="${nrc == null}">Seleccionar</option>
+                                <option value="true" th:selected="${nrc.esPrincipal != null and nrc.esPrincipal}">Si</option>
+                                <option value="false" th:selected="${nrc.esPrincipal != null and !nrc.esPrincipal}">No</option>
                             </select>
                         </div>
 
@@ -107,14 +111,12 @@
                         <div class="input">
 
                             <label for="Nrc-asociado">NRC asociado (Teoría)</label>
-                            <select name="" id="Nrc-asociado">
-                                <option value="">Seleccionar NRC</option>
-                            </select>
+                            <input type="text" id="Nrc-asociado" name="nrcVinculado" placeholder="Ej:28611" th:value="${nrc != null and nrc.nrcVinculado != null ? nrc.nrcVinculado.codigo : ''}">
 
                         </div>
 
-                        <button class="button" type="submit"><img src="../static/images/agregar.png" alt="">Guardar
-                        Curso</button>
+                        <button class="button" type="submit"><img src="/images/agregar.png" alt="">Guardar
+                        NRC</button>
 
                     </div>
                     
@@ -124,7 +126,7 @@
             </div>
             <div class="nrcs espacio">
 
-                <h2>Lista de Cursos</h2>
+                <h2>Lista de NRC</h2>
 
                 <table>
 
@@ -140,16 +142,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>28611</td>
-                            <td>Construcción del Software</td>
-                            <td>Carlos Zarate</td>
-                            <td>Presencial</td>
-                            <td><div class="si-principal">Si</div></td>
-                            <td>-</td>
-                            <td class="acciones"><a href="#" class="boton editar"><img src="../static/images/editar.png"
-                                        alt=""></a> <a href="#" class="boton borrar"><img
-                                        src="../static/images/eliminar.png" alt=""></a></td>
+                        <tr th:each="nrc : ${nrcs}">
+                            <td th:text="${nrc.codigo}"></td>
+                            <td th:text="${nrc.curso.nombre}"></td>
+                            <td th:text="${nrc.docente}"></td>
+                            <td th:text="${nrc.modalidad}"></td>
+                            <td class="principal"><span th:classappend="${nrc.esPrincipal ? 'si-principal' : 'no-principal'}" th:text="${nrc.esPrincipal ? 'Si' : 'No' }"></span></td>
+                            <td th:text="${nrc.nrcVinculado != null ? nrc.nrcVinculado.codigo : '-'}"></td>
+                            <td class="acciones"><a th:href="@{/nrc/editar(id=${nrc.id})}" class="boton editar"><img src="/images/editar.png"
+                                        alt=""></a> <a th:href="@{/nrc/eliminar(id=${nrc.id})}" class="boton borrar"><img
+                                        src="/images/eliminar.png" alt=""></a></td>
                         </tr>
                     </tbody>
 

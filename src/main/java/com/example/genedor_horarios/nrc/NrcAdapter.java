@@ -3,9 +3,11 @@ package com.example.genedor_horarios.nrc;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.genedor_horarios.curso.CursoAdapter;
+
 
 public class NrcAdapter {
-    
+
     public static Nrc toModel (NrcEntity entity) {
         if(entity == null) return null;
 
@@ -15,6 +17,8 @@ public class NrcAdapter {
         model.setDocente(entity.getDocente());
         model.setModalidad(entity.getModalidad());
         model.setEsPrincipal(entity.getEsPrincipal());
+        model.setCurso(CursoAdapter.toModel(entity.getCurso()));
+        model.setNrcVinculado(NrcAdapter.toModel(entity.getNrcVinculado()));
 
         return model;
     }
@@ -28,6 +32,8 @@ public class NrcAdapter {
         entity.setDocente(model.getDocente());
         entity.setModalidad(model.getModalidad());
         entity.setEsPrincipal(model.getEsPrincipal());
+        entity.setCurso(CursoAdapter.toEntity(model.getCurso()));
+        entity.setNrcVinculado(NrcAdapter.toEntity(model.getNrcVinculado()));
 
         return entity;
     }
