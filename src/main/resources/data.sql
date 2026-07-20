@@ -160,7 +160,7 @@ INSERT INTO bloque_horario (dia, hora_inicio, hora_fin, aula, nrc_id)
 VALUES ('JUEVES', '14:00', '15:29' , 'I603' , 2);
 
 INSERT INTO bloque_horario (dia, hora_inicio, hora_fin, aula, nrc_id)
-VALUES ('VIERNES', '14:20', '15:29' , 'I501' , 3);
+VALUES ('VIERNES', '14:00', '15:29' , 'I501' , 3);
 
 INSERT INTO bloque_horario (dia, hora_inicio, hora_fin, aula, nrc_id)
 VALUES ('VIERNES', '15:40', '17:09' , 'I501' , 3);

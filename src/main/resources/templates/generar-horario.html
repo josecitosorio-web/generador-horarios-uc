@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../static/images/logo.png">
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="stylesheet" href="../static/css/generar-horario.css">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/generar-horario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -20,7 +20,7 @@
 
         <div class="logo">
 
-            <img src="../static/images/logo.png" alt="imagen del logo de la marca">
+            <img src="/images/logo.png" alt="imagen del logo de la marca">
             <p>Kairos</p>
             <p>|</p>
             <p>La forma inteligente de construir tu horario</p>
@@ -34,12 +34,12 @@
         <div class="sidebar">
 
             <ul>
-                <li><a class="inicio btn" href="#"><img src="../static/images/casa.png" alt="">Inicio</a></li>
-                <li><a class="cursos btn" href="#"><img src="../static/images/libro.png" alt="">Cursos</a></li>
-                <li><a class="nrc btn" href="#"><img src="../static/images/etiqueta.png" alt="">NRC</a></li>
-                <li><a class="horario btn" href="#"><img src="../static/images/calendario.png" alt="">Bloques
+                <li><a class="inicio btn" href="#"><img src="/images/casa.png" alt="">Inicio</a></li>
+                <li><a class="cursos btn" href="#"><img src="/images/libro.png" alt="">Cursos</a></li>
+                <li><a class="nrc btn" href="#"><img src="/images/etiqueta.png" alt="">NRC</a></li>
+                <li><a class="horario btn" href="#"><img src="/images/calendario.png" alt="">Bloques
                         Horario</a></li>
-                <li><a class="generador btn" href="#"><img src="../static/images/rayo.png" alt="">Generar Horarios</a>
+                <li><a class="generador btn" href="#"><img src="/images/rayo.png" alt="">Generar Horarios</a>
                 </li>
             </ul>
 
@@ -61,81 +61,26 @@
 
                 </div>
 
-                <form>
+                <form th:action="@{/horario/generar}" method="get">
                     <div class="fila-form cursosLista">
 
-                        <div class="input espacio">
+                        <label class="input espacio" th:each="curso : ${cursos}">
 
-                            <input type="checkbox">
-                            <label class="descripcion">
+                            <input type="checkbox" name="cursos" th:value="${curso.id}">
+                            <div class="descripcion">
 
-                                <h5>ASUC01141</h5>
-                                <p>Arquitectura Empresarial</p>
+                                <h5 th:text="${curso.codigo}"></h5>
+                                <p th:text="${curso.nombre}"></p>
 
-                            </label>
+                            </div>
 
-                        </div>
-                        <div class="input espacio">
-
-                            <input type="checkbox">
-                            <label class="descripcion">
-
-                                <h5>ASUC00947</h5>
-                                <p>Construcción del Software</p>
-
-                            </label>
-
-                        </div>
-                        <div class="input espacio">
-
-                            <input type="checkbox">
-                            <label class="descripcion">
-
-                                <h5>ASUC00754</h5>
-                                <p>Redes de Computadores</p>
-
-                            </label>
-
-                        </div>
-                        <div class="input espacio">
-
-                            <input type="checkbox">
-                            <label class="descripcion">
-
-                                <h5>ASUC00466</h5>
-                                <p>Ingeniería Económica</p>
-
-                            </label>
-
-                        </div>
-                        <div class="input espacio">
-
-                            <input type="checkbox">
-                            <label class="descripcion">
-
-                                <h5>ASUC01365</h5>
-                                <p>Innovación Social</p>
-
-                            </label>
-
-                        </div>
-                        <div class="input espacio">
-
-                            <input type="checkbox">
-                            <label class="descripcion">
-
-                                <h5>ASUC01341</h5>
-                                <p>Gestión Profesional</p>
-
-                            </label>
-
-                        </div>
-
+                        </label>
+                        
                     </div>
                     <div class="fila-form">
 
 
-                        <button class="button" type="submit"><img src="../static/images/rayo.png" alt="">Generar
+                        <button class="button" type="submit"><img src="/images/rayo.png" alt="">Generar
                             Horarios</button>
 
                     </div>
@@ -154,109 +99,27 @@
 
                 <div class="horarios-lista">
 
-                    <div class="ganador espacio horario">
+                    <div th:each="hora, estado : ${horas}"
+                        th:class="'horario espacio' + (${estado.first} ? ' ganador' : '') ">
 
                         <div class="encabezado">
 
-                            <h3>#1</h3>
-                            <h3>Mejor Horario</h3>
+                            <h3 th:text="'#' + ${estado.count}"></h3>
+                            <h3 th:if="${estado.first}">Mejor Horario</h3>
 
                         </div>
                         <div class="tiempo">
 
                             <p>Tiempo Muerto</p>
-                            <h3>15 min</h3>
+                            <h3 th:text="${hora} + ' min'"></h3>
 
                         </div>
                         <div class="accion">
 
-                            <a href="#">Ver horario</a>
+                            <a th:href="@{/horario/ver(posicion=${estado.index})}" th:class="${!estado.first} ? 'espacio' : ''">Ver horario</a>
 
                         </div>
 
-                    </div>
-                    <div class="horario espacio">
-
-                        <div class="encabezado">
-
-                            <h3>#2</h3>
-
-
-                        </div>
-                        <div class="tiempo">
-
-                            <p>Tiempo Muerto</p>
-                            <h3>18 min</h3>
-
-                        </div>
-                        <div class="accion">
-
-                            <a href="#" class="espacio">Ver horario</a>
-
-                        </div>
-
-                    </div>
-                    <div class="horario espacio">
-
-                        <div class="encabezado">
-
-                            <h3>#3</h3>
-
-
-                        </div>
-                        <div class="tiempo">
-
-                            <p>Tiempo Muerto</p>
-                            <h3>22 min</h3>
-
-                        </div>
-                        <div class="accion">
-
-                            <a href="#" class="espacio">Ver horario</a>
-
-                        </div>
-
-                    </div>
-                    <div class="horario espacio">
-
-                        <div class="encabezado">
-
-                            <h3>#4</h3>
-
-
-                        </div>
-                        <div class="tiempo">
-
-                            <p>Tiempo Muerto</p>
-                            <h3>25 min</h3>
-
-                        </div>
-                        <div class="accion">
-
-                            <a href="#" class="espacio">Ver horario</a>
-
-                        </div>
-
-                    </div>
-                    <div class="horario espacio">
-
-                        <div class="encabezado">
-
-                            <h3>#5</h3>
-
-
-                        </div>
-                        <div class="tiempo">
-
-                            <p>Tiempo Muerto</p>
-                            <h3>27 min</h3>
-
-                        </div>
-                        <div class="accion">
-
-                            <a href="#" class="espacio">Ver horario</a>
-
-                        </div>
                     </div>
 
                 </div>
@@ -270,7 +133,7 @@
                 <div class="indicaciones">
 
                     <h2>3</h2>
-                    <h3>Vista del mejor horario (#1)</h3>
+                    <h3 th:text="|Vista del horario (#${posicion + 1})|"></h3>
 
                 </div>
 
@@ -296,85 +159,85 @@
                         <tbody>
                             <tr>
                                 <td>07:00 - 08:29</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-07:00'] != null ? horarioMap['LUNES-07:00'] : '-' }" th:classappend="${horarioMap['LUNES-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-07:00'] != null ? horarioMap['MARTES-07:00'] : '-' }" th:classappend="${horarioMap['MARTES-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-07:00'] != null ? horarioMap['MIERCOLES-07:00'] : '-' }" th:classappend="${horarioMap['MIERCOLES-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-07:00'] != null ? horarioMap['JUEVES-07:00'] : '-' }" th:classappend="${horarioMap['JUEVES-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-07:00'] != null ? horarioMap['VIERNES-07:00'] : '-' }" th:classappend="${horarioMap['VIERNES-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-07:00'] != null ? horarioMap['SABADO-07:00'] : '-' }" th:classappend="${horarioMap['SABADO-07:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-07:00'] != null ? horarioMap['DOMINGO-07:00'] : '-' }" th:classappend="${horarioMap['DOMINGO-07:00'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>08:40 - 10:09</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-08:40'] != null ? horarioMap['LUNES-08:40'] : '-' }" th:classappend="${horarioMap['LUNES-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-08:40'] != null ? horarioMap['MARTES-08:40'] : '-' }" th:classappend="${horarioMap['MARTES-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-08:40'] != null ? horarioMap['MIERCOLES-08:40'] : '-' }" th:classappend="${horarioMap['MIERCOLES-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-08:40'] != null ? horarioMap['JUEVES-08:40'] : '-' }" th:classappend="${horarioMap['JUEVES-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-08:40'] != null ? horarioMap['VIERNES-08:40'] : '-' }" th:classappend="${horarioMap['VIERNES-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-08:40'] != null ? horarioMap['SABADO-08:40'] : '-' }" th:classappend="${horarioMap['SABADO-08:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-08:40'] != null ? horarioMap['DOMINGO-08:40'] : '-' }" th:classappend="${horarioMap['DOMINGO-08:40'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>10:20 - 11:49</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-10:20'] != null ? horarioMap['LUNES-10:20'] : '-' }" th:classappend="${horarioMap['LUNES-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-10:20'] != null ? horarioMap['MARTES-10:20'] : '-' }" th:classappend="${horarioMap['MARTES-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-10:20'] != null ? horarioMap['MIERCOLES-10:20'] : '-' }" th:classappend="${horarioMap['MIERCOLES-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-10:20'] != null ? horarioMap['JUEVES-10:20'] : '-' }" th:classappend="${horarioMap['JUEVES-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-10:20'] != null ? horarioMap['VIERNES-10:20'] : '-' }" th:classappend="${horarioMap['VIERNES-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-10:20'] != null ? horarioMap['SABADO-10:20'] : '-' }" th:classappend="${horarioMap['SABADO-10:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-10:20'] != null ? horarioMap['DOMINGO-10:20'] : '-' }" th:classappend="${horarioMap['DOMINGO-10:20'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>12:00 - 13:29</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-12:00'] != null ? horarioMap['LUNES-12:00'] : '-' }" th:classappend="${horarioMap['LUNES-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-12:00'] != null ? horarioMap['MARTES-12:00'] : '-' }" th:classappend="${horarioMap['MARTES-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-12:00'] != null ? horarioMap['MIERCOLES-12:00'] : '-' }" th:classappend="${horarioMap['MIERCOLES-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-12:00'] != null ? horarioMap['JUEVES-12:00'] : '-' }" th:classappend="${horarioMap['JUEVES-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-12:00'] != null ? horarioMap['VIERNES-12:00'] : '-' }" th:classappend="${horarioMap['VIERNES-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-12:00'] != null ? horarioMap['SABADO-12:00'] : '-' }" th:classappend="${horarioMap['SABADO-12:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-12:00'] != null ? horarioMap['DOMINGO-12:00'] : '-' }" th:classappend="${horarioMap['DOMINGO-12:00'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>14:00 - 15:29</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-14:00'] != null ? horarioMap['LUNES-14:00'] : '-' }" th:classappend="${horarioMap['LUNES-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-14:00'] != null ? horarioMap['MARTES-14:00'] : '-' }" th:classappend="${horarioMap['MARTES-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-14:00'] != null ? horarioMap['MIERCOLES-14:00'] : '-' }" th:classappend="${horarioMap['MIERCOLES-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-14:00'] != null ? horarioMap['JUEVES-14:00'] : '-' }" th:classappend="${horarioMap['JUEVES-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-14:00'] != null ? horarioMap['VIERNES-14:00'] : '-' }" th:classappend="${horarioMap['VIERNES-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-14:00'] != null ? horarioMap['SABADO-14:00'] : '-' }" th:classappend="${horarioMap['SABADO-14:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-14:00'] != null ? horarioMap['DOMINGO-14:00'] : '-' }" th:classappend="${horarioMap['DOMINGO-14:00'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>15:40 - 17:09</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-15:40'] != null ? horarioMap['LUNES-15:40'] : '-' }" th:classappend="${horarioMap['LUNES-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-15:40'] != null ? horarioMap['MARTES-15:40'] : '-' }" th:classappend="${horarioMap['MARTES-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-15:40'] != null ? horarioMap['MIERCOLES-15:40'] : '-' }" th:classappend="${horarioMap['MIERCOLES-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-15:40'] != null ? horarioMap['JUEVES-15:40'] : '-' }" th:classappend="${horarioMap['JUEVES-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-15:40'] != null ? horarioMap['VIERNES-15:40'] : '-' }" th:classappend="${horarioMap['VIERNES-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-15:40'] != null ? horarioMap['SABADO-15:40'] : '-' }" th:classappend="${horarioMap['SABADO-15:40'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-15:40'] != null ? horarioMap['DOMINGO-15:40'] : '-' }" th:classappend="${horarioMap['DOMINGO-15:40'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>17:20 - 18:49</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-17:20'] != null ? horarioMap['LUNES-17:20'] : '-' }" th:classappend="${horarioMap['LUNES-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-17:20'] != null ? horarioMap['MARTES-17:20'] : '-' }" th:classappend="${horarioMap['MARTES-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-17:20'] != null ? horarioMap['MIERCOLES-17:20'] : '-' }" th:classappend="${horarioMap['MIERCOLES-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-17:20'] != null ? horarioMap['JUEVES-17:20'] : '-' }" th:classappend="${horarioMap['JUEVES-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-17:20'] != null ? horarioMap['VIERNES-17:20'] : '-' }" th:classappend="${horarioMap['VIERNES-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-17:20'] != null ? horarioMap['SABADO-17:20'] : '-' }" th:classappend="${horarioMap['SABADO-17:20'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-17:20'] != null ? horarioMap['DOMINGO-17:20'] : '-' }" th:classappend="${horarioMap['DOMINGO-17:20'] != null ? 'con-curso' : ''}"></td>
                             </tr>
                             <tr>
                                 <td>19:00 - 20:29</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
+                                <td th:text="${horarioMap['LUNES-19:00'] != null ? horarioMap['LUNES-19:00'] : '-' }" th:classappend="${horarioMap['LUNES-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MARTES-19:00'] != null ? horarioMap['MARTES-19:00'] : '-' }" th:classappend="${horarioMap['MARTES-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['MIERCOLES-19:00'] != null ? horarioMap['MIERCOLES-19:00'] : '-' }" th:classappend="${horarioMap['MIERCOLES-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['JUEVES-19:00'] != null ? horarioMap['JUEVES-19:00'] : '-' }" th:classappend="${horarioMap['JUEVES-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['VIERNES-19:00'] != null ? horarioMap['VIERNES-19:00'] : '-' }" th:classappend="${horarioMap['VIERNES-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['SABADO-19:00'] != null ? horarioMap['SABADO-19:00'] : '-' }" th:classappend="${horarioMap['SABADO-19:00'] != null ? 'con-curso' : ''}"></td>
+                                <td th:text="${horarioMap['DOMINGO-19:00'] != null ? horarioMap['DOMINGO-19:00'] : '-' }" th:classappend="${horarioMap['DOMINGO-19:00'] != null ? 'con-curso' : ''}"></td>
                             </tr>
-
+                                
                         </tbody>
 
                     </table>
