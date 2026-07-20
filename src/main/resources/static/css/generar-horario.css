@@ -171,3 +171,18 @@
 .horario .accion a:hover {
     transform: scale(1.05);
 }
+
+
+.con-curso {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+    border-radius: 8px;
+    padding: 2px 4px;
+    font-weight: 500;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+.horario table thead th{
+    text-align: center;
+}

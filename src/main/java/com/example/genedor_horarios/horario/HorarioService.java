@@ -2,6 +2,7 @@ package com.example.genedor_horarios.horario;
 
 
 import java.util.List;
+import java.util.Map;
 
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 
@@ -15,5 +16,6 @@ public interface HorarioService {
     List<List<BloqueHorarioEntity>> ordenarPorRanking (List<List<BloqueHorarioEntity>> horarios);
     List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId);
     List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios);
+    Map<String,String> mostrarHorario (List<BloqueHorarioEntity> horario);
 
 }

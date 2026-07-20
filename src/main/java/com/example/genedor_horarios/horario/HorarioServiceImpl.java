@@ -1,6 +1,7 @@
 package com.example.genedor_horarios.horario;
 
 import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -151,7 +152,7 @@ public class HorarioServiceImpl implements HorarioService {
 
                 Long tiempoMuerto = Duration.between(actual.getHoraFin(), siguiente.getHoraInicio()).toMinutes();
 
-                if(tiempoMuerto > 10) {
+                if(tiempoMuerto > 11) {
 
                     puntaje += tiempoMuerto;
 
@@ -206,6 +207,28 @@ public class HorarioServiceImpl implements HorarioService {
         }
 
         return puntajes;
+
+    }
+
+    @Override
+    public Map<String,String> mostrarHorario (List<BloqueHorarioEntity> horario) {
+
+        Map<String,String> horarioMap = new HashMap<>();
+
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
+
+        for(BloqueHorarioEntity bloque : horario) {
+
+            String horaInicioFormateado = bloque.getHoraInicio().format(formato);
+
+            String clave = bloque.getDia().toString() + "-" + horaInicioFormateado;
+
+            horarioMap.put(clave, bloque.getNrc().getCurso().getNombre());
+
+
+        }
+
+        return horarioMap;
 
     }
 
