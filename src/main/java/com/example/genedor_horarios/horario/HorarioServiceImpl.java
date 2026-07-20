@@ -176,4 +176,37 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
+    @Override
+    public List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId) {
+
+
+        List <BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
+
+        List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
+
+        generarHorariosElegibles(cursosId, horarioCandidato, listaHorariosElegidos);
+
+        ordenarPorRanking(listaHorariosElegidos);
+
+        List<List<BloqueHorarioEntity>> top5 = listaHorariosElegidos.subList(0, 4);
+
+        return top5;
+
+    }
+
+    @Override
+    public List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios) {
+
+        List<Integer> puntajes = new ArrayList<>();
+
+        for(List<BloqueHorarioEntity> horario : horarios) {
+
+            puntajes.add(calcularHoraMuertas(horario));
+
+        }
+
+        return puntajes;
+
+    }
+
 }
