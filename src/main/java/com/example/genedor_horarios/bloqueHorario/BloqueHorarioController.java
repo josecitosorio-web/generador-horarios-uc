@@ -29,6 +29,7 @@ public class BloqueHorarioController {
         model.addAttribute("bloques", bloqueHorarioService.listarTodos());
         model.addAttribute("bloque", new BloqueHorario());
         model.addAttribute("dias", DiaSemana.values());
+        model.addAttribute("paginaActiva", "bloques");
 
         return "gestion-bloques";
 
@@ -44,6 +45,7 @@ public class BloqueHorarioController {
         @RequestParam String nrcCodigo) {
 
             bloqueHorarioService.registrarBloque(id,dia,horaInicio,horaFin,aula,nrcCodigo);
+            
 
             return "redirect:/bloqueHorario/gestion";
 
@@ -56,6 +58,7 @@ public class BloqueHorarioController {
         model.addAttribute("bloques", bloqueHorarioService.listarTodos());
         model.addAttribute("bloque", bloqueHorarioService.encontrarPorId(id));
         model.addAttribute("dias", DiaSemana.values());
+        model.addAttribute("paginaActiva", "bloques");
 
         return "gestion-bloques";
 
@@ -77,6 +80,7 @@ public class BloqueHorarioController {
         model.addAttribute("bloques", bloqueHorarioService.listarTodos());
         model.addAttribute("bloque", new BloqueHorario());
         model.addAttribute("dias", DiaSemana.values());
+        model.addAttribute("paginaActiva", "bloques");
 
 
         return "gestion-bloques";

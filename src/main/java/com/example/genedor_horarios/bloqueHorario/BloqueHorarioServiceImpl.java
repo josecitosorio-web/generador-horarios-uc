@@ -84,4 +84,11 @@ public class BloqueHorarioServiceImpl implements BloqueHorarioService {
         return horarioMap;
     }
 
+    @Override
+    public Long cantidadBloque () {
+
+        return bloqueHorarioRepository.count();
+
+    }
+
 }

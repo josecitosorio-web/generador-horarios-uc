@@ -26,6 +26,7 @@ public class CursoController {
     public String listar(Model model) {
 
         model.addAttribute("cursos" , cursoService.listarTodos());
+        model.addAttribute("paginaActiva", "cursos");
 
         return "gestion-cursos";
     }
@@ -34,6 +35,7 @@ public class CursoController {
     public String registrar(@ModelAttribute Curso curso) {
 
         cursoService.agregarCurso(curso);
+        
 
         return "redirect:/curso/gestion";
     }
@@ -43,6 +45,7 @@ public class CursoController {
 
         model.addAttribute("cursos" , cursoService.listarTodos());
         model.addAttribute("curso", cursoService.buscarPorId(id));
+        model.addAttribute("paginaActiva", "cursos");
 
         return "gestion-cursos";
 
@@ -53,6 +56,7 @@ public class CursoController {
 
         cursoService.eliminarPorId(id);
         model.addAttribute("cursos" , cursoService.listarTodos());
+        model.addAttribute("paginaActiva", "cursos");
 
         return "gestion-cursos";
 

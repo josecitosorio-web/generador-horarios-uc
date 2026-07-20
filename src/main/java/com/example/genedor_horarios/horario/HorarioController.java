@@ -32,6 +32,7 @@ public class HorarioController {
         model.addAttribute("cursos", cursoService.listarTodos());
         model.addAttribute("horarioMap", new HashMap<>());
         model.addAttribute("posicion", 0);
+        model.addAttribute("paginaActiva", "generador");
 
         return "generar-horario";
 
@@ -48,6 +49,7 @@ public class HorarioController {
         model.addAttribute("horarioMap", horarioService.mostrarHorario(horarioGanador));
         session.setAttribute("top5", top5);
         model.addAttribute("posicion", 0);
+        model.addAttribute("paginaActiva", "generador");
 
         return "generar-horario";
 
@@ -65,6 +67,7 @@ public class HorarioController {
         model.addAttribute("cursos", cursoService.listarTodos());
         model.addAttribute("horarioMap", horarioService.mostrarHorario(horarioEscogido));
         model.addAttribute("posicion", posicion);
+        model.addAttribute("paginaActiva", "generador");
 
 
         return "generar-horario";

@@ -11,4 +11,5 @@ public interface BloqueHorarioService {
     BloqueHorario encontrarPorId (Long id);
     void eliminarPorId(Long id);
     Map<String,String> mostrarHorario (String nrc);
+    Long cantidadBloque ();
 }

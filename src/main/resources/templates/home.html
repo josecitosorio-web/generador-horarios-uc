@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../static/images/logo.png">
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="stylesheet" href="../static/css/home.css">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -20,7 +20,7 @@
 
         <div class="logo">
 
-            <img src="../static/images/logo.png" alt="imagen del logo de la marca">
+            <img src="/images/logo.png" alt="imagen del logo de la marca">
             <p>Kairos</p>
             <p>|</p>
             <p>La forma inteligente de construir tu horario</p>
@@ -31,19 +31,7 @@
 
     <main>
 
-        <div class="sidebar">
-
-            <ul>
-                <li><a class="inicio btn" href="#"><img src="../static/images/casa.png" alt="">Inicio</a></li>
-                <li><a class="cursos btn" href="#"><img src="../static/images/libro.png" alt="">Cursos</a></li>
-                <li><a class="nrc btn" href="#"><img src="../static/images/etiqueta.png" alt="">NRC</a></li>
-                <li><a class="horario btn" href="#"><img src="../static/images/calendario.png" alt="">Bloques
-                        Horario</a></li>
-                <li><a class="generador btn" href="#"><img src="../static/images/rayo.png" alt="">Generar Horarios</a>
-                </li>
-            </ul>
-
-        </div>
+        <div th:replace="fragments/menu :: menu"></div>
         <div class="dashboard-main">
 
             <div class="bienvenida-seccion">
@@ -56,7 +44,7 @@
                 </div>
                 <div class="img-portada">
 
-                    <img src="../static/images/imagen-portada.png" alt="imagen de un joven en su laptop feliz">
+                    <img src="/images/imagen-portada.png" alt="imagen de un joven en su laptop feliz">
 
                 </div>
 
@@ -67,12 +55,12 @@
 
                     <div class="icono">
 
-                        <img src="../static/images/libro.png" alt="icono de libro abierto">
+                        <img src="/images/libro.png" alt="icono de libro abierto">
 
                     </div>
                     <div class="texto">
 
-                        <h2>24</h2>
+                        <h2 th:text="${nCursos}"></h2>
                         <p>Cursos Registrados</p>
 
                     </div>
@@ -82,12 +70,12 @@
 
                     <div class="icono">
 
-                        <img src="../static/images/etiqueta.png" alt="icono de una etiqueta">
+                        <img src="/images/etiqueta.png" alt="icono de una etiqueta">
 
                     </div>
                     <div class="texto">
 
-                        <h2>86</h2>
+                        <h2 th:text="${nNrc}"></h2>
                         <p>NRC Registrados</p>
 
                     </div>
@@ -97,28 +85,13 @@
 
                     <div class="icono">
 
-                        <img src="../static/images/calendario.png" alt="icono de un calendario">
+                        <img src="/images/calendario.png" alt="icono de un calendario">
 
                     </div>
                     <div class="texto">
 
-                        <h2>312</h2>
+                        <h2 th:text="${nBloques}"></h2>
                         <p>Bloques de horario</p>
-
-                    </div>
-
-                </div>
-                <div class="horario metrica">
-
-                    <div class="icono">
-
-                        <img src="../static/images/rayo.png" alt="icono de un rayo">
-
-                    </div>
-                    <div class="texto">
-
-                        <h2>1 248</h2>
-                        <p>Horarios Generados</p>
 
                     </div>
 
@@ -137,7 +110,7 @@
 
                             <div class="imagen">
 
-                                <img src="../static/images/libro.png" alt="icono de un libro">
+                                <img src="/images/libro.png" alt="icono de un libro">
 
                             </div>
                             <div class="info">
@@ -150,7 +123,7 @@
                         </div>
                         <div class="btn">
 
-                            <a href="#">Ir a Cursos <img src="../static/images/flecha.png" alt="icono de flecha"></a>
+                            <a th:href="@{/curso/gestion}">Ir a Cursos <img src="/images/flecha.png" alt="icono de flecha"></a>
 
                         </div>
 
@@ -161,7 +134,7 @@
 
                             <div class="imagen">
 
-                                <img src="../static/images/etiqueta.png" alt="icono de una etiqueta">
+                                <img src="/images/etiqueta.png" alt="icono de una etiqueta">
 
                             </div>
                             <div class="info">
@@ -174,7 +147,7 @@
                         </div>
                         <div class="btn">
 
-                            <a href="#">Ir a NRC <img src="../static/images/flecha.png" alt="icono de flecha"></a>
+                            <a th:href="@{/nrc/gestion}">Ir a NRC <img src="/images/flecha.png" alt="icono de flecha"></a>
 
                         </div>
 
@@ -185,7 +158,7 @@
 
                             <div class="imagen">
 
-                                <img src="../static/images/calendario.png" alt="icono de un calendario">
+                                <img src="/images/calendario.png" alt="icono de un calendario">
 
                             </div>
                             <div class="info">
@@ -198,7 +171,7 @@
                         </div>
                         <div class="btn">
 
-                            <a href="#">Ir a Bloques <img src="../static/images/flecha.png" alt="icono de flecha"></a>
+                            <a th:href="@{/bloqueHorario/gestion}">Ir a Bloques <img src="/images/flecha.png" alt="icono de flecha"></a>
 
                         </div>
 
@@ -209,7 +182,7 @@
 
                             <div class="imagen">
 
-                                <img src="../static/images/rayo.png" alt="icono de un rayo">
+                                <img src="/images/rayo.png" alt="icono de un rayo">
 
                             </div>
                             <div class="info">
@@ -222,7 +195,7 @@
                         </div>
                         <div class="btn">
 
-                            <a href="#">Ir al Generador <img src="../static/images/flecha.png"
+                            <a th:href="@{/horario/inicio}">Ir al Generador <img src="/images/flecha.png"
                                     alt="icono de flecha"></a>
 
                         </div>
