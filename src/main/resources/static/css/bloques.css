@@ -20,3 +20,16 @@ tbody {
 tbody tr td:nth-child(1) {
     text-align: left;
 }
+
+thead tr th {
+    text-align: center;
+}
+
+.con-curso {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+    border-radius: 8px;
+    padding: 2px 4px;
+    font-weight: 500;
+    font-size: 0.5em;
+}

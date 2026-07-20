@@ -1,6 +1,7 @@
 package com.example.genedor_horarios.bloqueHorario;
 
 import java.time.LocalTime;
+import java.util.HashMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,7 @@ public class BloqueHorarioController {
     @GetMapping("/gestion")
     public String listar(Model model){
 
+        model.addAttribute("horarioMap", new HashMap<>());
         model.addAttribute("bloques", bloqueHorarioService.listarTodos());
         model.addAttribute("bloque", new BloqueHorario());
         model.addAttribute("dias", DiaSemana.values());
@@ -50,6 +52,7 @@ public class BloqueHorarioController {
     @GetMapping("/editar")
     public String editar (@RequestParam(required = false)Long id, Model model) {
 
+        model.addAttribute("horarioMap", new HashMap<>());
         model.addAttribute("bloques", bloqueHorarioService.listarTodos());
         model.addAttribute("bloque", bloqueHorarioService.encontrarPorId(id));
         model.addAttribute("dias", DiaSemana.values());
@@ -65,6 +68,18 @@ public class BloqueHorarioController {
 
         return "redirect:/bloqueHorario/gestion";
 
+    }
+
+    @GetMapping("/ver-horario")
+    public String verHorario (@RequestParam String nrc, Model model) {
+
+        model.addAttribute("horarioMap", bloqueHorarioService.mostrarHorario(nrc));
+        model.addAttribute("bloques", bloqueHorarioService.listarTodos());
+        model.addAttribute("bloque", new BloqueHorario());
+        model.addAttribute("dias", DiaSemana.values());
+
+
+        return "gestion-bloques";
     }
     
 }

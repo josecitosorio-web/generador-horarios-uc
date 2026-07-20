@@ -245,7 +245,7 @@ td {
 
     padding: 0.4em 2em;
 
-    background-color: green;
+    
     border-radius: 0.5em;
 
     transition: all 0.5s;
@@ -266,4 +266,8 @@ td {
 
 .borrar {
     background-color: #ce3436;
+}
+
+.ver {
+    background-color: green;
 }
