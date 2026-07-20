@@ -2,6 +2,8 @@ package com.example.genedor_horarios.bloqueHorario;
 
 import java.time.LocalTime;
 
+import com.example.genedor_horarios.nrc.Nrc;
+
 public class BloqueHorario {
     
     private Long id;
@@ -9,15 +11,18 @@ public class BloqueHorario {
     private LocalTime horaInicio;
     private LocalTime horaFin;
     private String aula;
+    private Nrc nrc;
 
     public BloqueHorario () {}
 
-    public BloqueHorario (DiaSemana dia, LocalTime horaInicio, LocalTime horaFin, String aula) {
+    public BloqueHorario (Long id, DiaSemana dia, LocalTime horaInicio, LocalTime horaFin, String aula, Nrc nrc) {
 
+        this.id = id;
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
         this.aula = aula;
+        this.nrc = nrc;
 
     }
 
@@ -35,6 +40,9 @@ public class BloqueHorario {
 
     public String getAula () {return this.aula;}
     public void setAula (String aula) {this.aula = aula;}
+
+    public Nrc getNrc () {return this.nrc;}
+    public void setNrc (Nrc nrc) {this.nrc = nrc;}
 
 
 

@@ -3,6 +3,8 @@ package com.example.genedor_horarios.bloqueHorario;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.example.genedor_horarios.nrc.NrcAdapter;
+
 public class BloqueHorarioAdapter {
 
     public static BloqueHorario toModel (BloqueHorarioEntity entity) {
@@ -14,6 +16,7 @@ public class BloqueHorarioAdapter {
         model.setHoraInicio(entity.getHoraInicio());
         model.setHoraFin(entity.getHoraFin());
         model.setAula(entity.getAula());
+        model.setNrc(NrcAdapter.toModel(entity.getNrc()));
 
         return model;
     }
@@ -27,6 +30,7 @@ public class BloqueHorarioAdapter {
         entity.setHoraInicio(model.getHoraInicio());
         entity.setHoraFin(model.getHoraFin());
         entity.setAula(model.getAula());
+        entity.setNrc(NrcAdapter.toEntity(model.getNrc()));
 
         return entity;
     }
