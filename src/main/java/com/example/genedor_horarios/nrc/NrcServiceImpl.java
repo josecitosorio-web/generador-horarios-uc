@@ -69,4 +69,11 @@ public class NrcServiceImpl implements NrcService {
 
     }
 
+    @Override
+    public Long cantidadNrc () {
+
+        return nrcRepository.count();
+        
+    }
+
 }

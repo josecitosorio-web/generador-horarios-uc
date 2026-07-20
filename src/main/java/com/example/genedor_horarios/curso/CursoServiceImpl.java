@@ -42,5 +42,12 @@ public class CursoServiceImpl implements CursoService {
         cursoRepository.deleteById(id);
 
     }
+
+    @Override
+    public Long cantidadCurso () {
+
+        return cursoRepository.count();
+
+    }
     
 }

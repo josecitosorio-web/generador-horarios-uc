@@ -31,19 +31,7 @@
 
     <main>
 
-        <div class="sidebar">
-
-            <ul>
-                <li><a class="inicio btn" href="#"><img src="/images/casa.png" alt="">Inicio</a></li>
-                <li><a class="cursos btn" href="#"><img src="/images/libro.png" alt="">Cursos</a></li>
-                <li><a class="nrc btn" href="#"><img src="/images/etiqueta.png" alt="">NRC</a></li>
-                <li><a class="horario btn" href="#"><img src="/images/calendario.png" alt="">Bloques
-                        Horario</a></li>
-                <li><a class="generador btn" href="#"><img src="/images/rayo.png" alt="">Generar Horarios</a>
-                </li>
-            </ul>
-
-        </div>
+        <div th:replace="fragments/menu :: menu"></div>
         <div class="dashboard-main">
 
             <div class="titulo">

@@ -1,0 +1,13 @@
+<div class="sidebar" th:fragment="menu">
+
+            <ul>
+                <li><a class="inicio btn" th:href="@{/home/inicio}" th:classappend="${paginaActiva == 'home' ? 'activo' : ''}"><img src="/images/casa.png" alt="">Inicio</a></li>
+                <li><a class="cursos btn" th:href="@{/curso/gestion}" th:classappend="${paginaActiva == 'cursos' ? 'activo' : ''}"><img src="/images/libro.png" alt="">Cursos</a></li>
+                <li><a class="nrc btn" th:href="@{/nrc/gestion}" th:classappend="${paginaActiva == 'nrcs' ? 'activo' : ''}"><img src="/images/etiqueta.png" alt="">NRC</a></li>
+                <li><a class="horario btn" th:href="@{/bloqueHorario/gestion}"  th:classappend="${paginaActiva == 'bloques' ? 'activo' : ''}"><img src="/images/calendario.png" alt="">Bloques
+                        Horario</a></li>
+                <li><a class="generador btn" th:href="@{/horario/inicio}"  th:classappend="${paginaActiva == 'generador' ? 'activo' : ''}"><img src="/images/rayo.png" alt="">Generar Horarios</a>
+                </li>
+            </ul>
+
+        </div>

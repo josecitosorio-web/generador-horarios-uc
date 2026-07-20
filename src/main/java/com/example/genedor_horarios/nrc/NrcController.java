@@ -27,6 +27,7 @@ public class NrcController {
         model.addAttribute("nrcs" , nrcService.listarTodos());
         model.addAttribute("cursos", cursoService.listarTodos());
         model.addAttribute("nrc", new NrcEntity());
+        model.addAttribute("paginaActiva", "nrcs");
 
 
         return "gestion-nrc";
@@ -47,6 +48,7 @@ public class NrcController {
         model.addAttribute("nrc",nrcService.buscarPorId(id));
         model.addAttribute("nrcs" , nrcService.listarTodos());
         model.addAttribute("cursos", cursoService.listarTodos());
+        model.addAttribute("paginaActiva", "nrcs");
         
 
         return "gestion-nrc";

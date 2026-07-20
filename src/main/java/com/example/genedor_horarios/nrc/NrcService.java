@@ -16,6 +16,8 @@ public interface NrcService {
 
     void eliminarPorId (Long id);
 
+    Long cantidadNrc ();
+
     
     
 }

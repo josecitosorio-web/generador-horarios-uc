@@ -273,5 +273,10 @@ td {
 }
 
 
+/* diseño de la actividad del menu */
 
+.activo {
 
+    background-color: #452894;
+
+}
