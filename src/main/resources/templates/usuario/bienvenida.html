@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -27,7 +27,7 @@
         <h1>¡Bienvenido!</h1>
         <p>Para comenzar, cuentanos tu nombre</p>
 
-        <form action="">
+        <form th:action="@{/usuario/registro}" method="post">
 
             <div class="input">
                 <div class="imagen">
@@ -36,7 +36,7 @@
 
                 </div>
                 
-                <input type="text" placeholder="Escribe tu nombre">
+                <input type="text" name="nombre" placeholder="Escribe tu nombre">
 
             </div>
 
