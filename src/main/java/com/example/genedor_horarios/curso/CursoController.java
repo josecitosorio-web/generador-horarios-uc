@@ -28,7 +28,7 @@ public class CursoController {
         model.addAttribute("cursos" , cursoService.listarTodos());
         model.addAttribute("paginaActiva", "cursos");
 
-        return "gestion-cursos";
+        return "admin/gestion-cursos";
     }
 
     @PostMapping("/registrar")
@@ -47,7 +47,7 @@ public class CursoController {
         model.addAttribute("curso", cursoService.buscarPorId(id));
         model.addAttribute("paginaActiva", "cursos");
 
-        return "gestion-cursos";
+        return "admin/gestion-cursos";
 
     }
 
@@ -58,7 +58,7 @@ public class CursoController {
         model.addAttribute("cursos" , cursoService.listarTodos());
         model.addAttribute("paginaActiva", "cursos");
 
-        return "gestion-cursos";
+        return "admin/gestion-cursos";
 
     }
 

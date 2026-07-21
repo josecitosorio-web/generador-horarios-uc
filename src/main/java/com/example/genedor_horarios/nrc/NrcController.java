@@ -30,7 +30,7 @@ public class NrcController {
         model.addAttribute("paginaActiva", "nrcs");
 
 
-        return "gestion-nrc";
+        return "admin/gestion-nrc";
 
     }
 
@@ -51,7 +51,7 @@ public class NrcController {
         model.addAttribute("paginaActiva", "nrcs");
         
 
-        return "gestion-nrc";
+        return "admin/gestion-nrc";
     }
 
     @GetMapping("/eliminar")
