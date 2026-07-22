@@ -6,7 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
@@ -16,7 +15,6 @@ import com.example.genedor_horarios.horario.HorarioService;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/usuario")
 public class UsuarioController {
 
     private final CursoService cursoService;
@@ -41,7 +39,7 @@ public class UsuarioController {
         session.setAttribute("nombre", nombre );
         
 
-        return "redirect:/usuario/cursos";
+        return "redirect:/cursos";
 
     }
 
@@ -110,7 +108,7 @@ public class UsuarioController {
     @GetMapping("volver-cursos")
     public String volverCursos() {
 
-        return "redirect:/usuario/cursos";
+        return "redirect:/cursos";
 
     }
 
