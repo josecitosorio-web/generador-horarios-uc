@@ -42,82 +42,17 @@
 
             </div>
 
-            <form action="">
+            <form th:action="@{/usuario/generar}" method="get">
                 <div class="cursoLista">
 
-                    <label class="input espacio">
+                    <label class="input espacio" th:each="curso : ${cursos}">
 
-                        <input type="checkbox" name="cursos">
+                        <input type="checkbox" name="cursos" th:value="${curso.id}">
                         <div class="descripcion">
 
-                            <h5>ARQUITECTURA EMPRESARIAL</h5>
-                            <p>CODIGO: ASUC01141</p>
-                            <p>Creditos : 5</p>
-
-                        </div>
-
-                    </label>
-
-                    <label class="input espacio">
-
-                        <input type="checkbox" name="cursos">
-                        <div class="descripcion">
-
-                            <h5>CONSTRUCCIÓN DE SOFTWARE</h5>
-                            <p>CODIGO: ASUC00947</p>
-                            <p>Creditos : 5</p>
-
-                        </div>
-
-                    </label>
-
-                    <label class="input espacio">
-
-                        <input type="checkbox" name="cursos">
-                        <div class="descripcion">
-
-                            <h5>REDES DE COMPUTADORES</h5>
-                            <p>CODIGO: ASUC00754</p>
-                            <p>Creditos : 4</p>
-
-                        </div>
-
-                    </label>
-
-                    <label class="input espacio">
-
-                        <input type="checkbox" name="cursos">
-                        <div class="descripcion">
-
-                            <h5>INGENIERÍA ECONÓMICA</h5>
-                            <p>CODIGO: ASUC00466</p>
-                            <p>Creditos : 3</p>
-
-                        </div>
-
-                    </label>
-
-                    <label class="input espacio">
-
-                        <input type="checkbox" name="cursos">
-                        <div class="descripcion">
-
-                            <h5>INNOVACIÓN SOCIAL</h5>
-                            <p>CODIGO: ASUC01365</p>
-                            <p>Creditos : 2</p>
-
-                        </div>
-
-                    </label>
-
-                    <label class="input espacio">
-
-                        <input type="checkbox" name="cursos">
-                        <div class="descripcion">
-
-                            <h5>GESTIÓN PROFESIONAL</h5>
-                            <p>CODIGO: ASUC01341</p>
-                            <p>Creditos : 1</p>
+                            <h5 th:text="${curso.nombre}"></h5>
+                            <p th:text="|CODIGO : ${curso.codigo}|"></p>
+                            <p th:text="|Créditos : ${curso.creditos}|"></p>
 
                         </div>
 
@@ -127,7 +62,7 @@
 
                 </div>
 
-                <button><img src="/images/calendario.png" alt="">Crear Horarios</button>
+                <button type="submit"><img src="/images/calendario.png" alt="">Crear Horarios</button>
             </form>
 
         </div>

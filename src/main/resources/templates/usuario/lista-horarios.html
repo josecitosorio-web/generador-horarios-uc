@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo.png">
-    <link rel="stylesheet" href="../usuario/css/lista-horario.css">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/lista-horario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -20,14 +20,14 @@
         <div class="header">
             <div class="logo">
 
-                <img src="images/logo-head.png" alt="">
+                <img src="/images/logo-head.png" alt="">
                 <h1>KAIROS</h1>
 
             </div>
             <div class="user">
 
-                <p>Hola, Jose</p>
-                <img src="images/usuario.png" alt="">
+                <p th:text="|Hola, ${nombre}|"></p>
+                <img src="/images/usuario.png" alt="">
 
             </div>
 
@@ -44,122 +44,28 @@
 
             <div class="horarios-lista">
 
-                <div class="puesto">
+                <div th:each="hora, estado : ${horas}" class="puesto">
 
-                    <div class="numero uno">
+                    <div class="numero" th:classappend="${estado.index == 0 ? 'uno' :
+                      estado.index == 1 ? 'dos' :
+                      estado.index == 2 ? 'tres' : ''}">
 
-                        <p>1</p>
+                        <p th:text="${estado.count}"></p>
 
                     </div>
 
-                    <p class="horario-titulo">Horario <span>#1</span></p>
+                    <p class="horario-titulo">
+                        Horario <span th:text="${'#' + estado.count}">
+                    </p>
 
                     <div class="tiempo">
-
                         <p>Tiempo muerto total</p>
-                        <p>15 min</p>
-
+                        <p th:text="${hora + ' min'}"></p>
                     </div>
 
                     <div class="acciones">
 
-                        <a href=""><img src="images/ojo-azul.png" alt="">Ver Horario</a>
-
-                    </div>
-
-                </div>
-                <div class="puesto">
-
-                    <div class="numero dos">
-
-                        <p>2</p>
-
-                    </div>
-
-                    <p class="horario-titulo">Horario <span>#2</span></p>
-
-                    <div class="tiempo">
-
-                        <p>Tiempo muerto total</p>
-                        <p>28 min</p>
-
-                    </div>
-
-                    <div class="acciones">
-
-                        <a href=""><img src="images/ojo-azul.png" alt="">Ver Horario</a>
-
-                    </div>
-
-                </div>
-                <div class="puesto">
-
-                    <div class="numero tres">
-
-                        <p>3</p>
-
-                    </div>
-
-                    <p class="horario-titulo">Horario <span>#3</span></p>
-
-                    <div class="tiempo">
-
-                        <p>Tiempo muerto total</p>
-                        <p>35 min</p>
-
-                    </div>
-
-                    <div class="acciones">
-
-                        <a href=""><img src="images/ojo-azul.png" alt="">Ver Horario</a>
-
-                    </div>
-
-                </div>
-                <div class="puesto">
-
-                    <div class="numero">
-
-                        <p>4</p>
-
-                    </div>
-
-                    <p class="horario-titulo">Horario <span>#4</span></p>
-
-                    <div class="tiempo">
-
-                        <p>Tiempo muerto total</p>
-                        <p>42 min</p>
-
-                    </div>
-
-                    <div class="acciones">
-
-                        <a href=""><img src="images/ojo-azul.png" alt="">Ver Horario</a>
-
-                    </div>
-
-                </div>
-                <div class="puesto">
-
-                    <div class="numero">
-
-                        <p>5</p>
-
-                    </div>
-
-                    <p class="horario-titulo">Horario <span>#5</span></p>
-
-                    <div class="tiempo">
-
-                        <p>Tiempo muerto total</p>
-                        <p>55 min</p>
-
-                    </div>
-
-                    <div class="acciones">
-
-                        <a href=""><img src="images/ojo-azul.png" alt="">Ver Horario</a>
+                        <a th:href="@{/usuario/ver(posicion=${estado.index})}"><img src="/images/ojo-azul.png" alt="">Ver Horario</a>
 
                     </div>
 
@@ -169,7 +75,7 @@
 
             <div class="volver">
 
-                <a href="#">Volver a la seccion de Cursos</a>
+                <a th:href="@{/usuario/volver-cursos}">Volver a la seccion de Cursos</a>
 
             </div>
 

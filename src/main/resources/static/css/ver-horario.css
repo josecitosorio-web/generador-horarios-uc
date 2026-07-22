@@ -105,6 +105,10 @@ table {
     width: 100%;
 }
 
+table thead th {
+    text-align: center;
+}
+
 th,
 td {
     padding: 1em 0em;
@@ -120,4 +124,14 @@ td {
 
     gap: 1em;
 
+}
+
+.con-curso {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+    border-radius: 8px;
+    padding: 2px 4px;
+    font-weight: 500;
+    font-size: 0.7em;
+    text-align: center;
 }

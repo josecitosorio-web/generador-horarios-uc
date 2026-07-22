@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/images/logo.png">
-    <link rel="stylesheet" href="../usuario/css/ver-horario.css">
+    <link rel="stylesheet" href="/css/ver-horario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -26,7 +26,7 @@
             </div>
             <div class="user">
 
-                <p>Hola, Jose</p>
+                <p th:text="|Hola, ${nombre}|"></p>
                 <img src="/images/usuario.png" alt="">
 
             </div>
@@ -37,9 +37,9 @@
 
             <div class="espacio-titulo">
 
-                <a href="#">Volver a horarios</a>
-                <h1>Horario #1</h1>
-                <p>Tiempo muerto total: <span>15 min</span></p>
+                <a th:href="@{/usuario/volver}">Volver a horarios</a>
+                <h1 th:text="|Horario #${posicion + 1}|">Horario #1</h1>
+                <p>Tiempo muerto total: <span th:text="|${horaMuerta} min|"></span></p>
 
             </div>
 
