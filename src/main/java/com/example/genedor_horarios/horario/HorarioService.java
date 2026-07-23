@@ -8,6 +8,7 @@ import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 
 public interface HorarioService {
     
+    String validarDatos (List<Long> cursos);
     boolean tieneCruce (BloqueHorarioEntity bloqueInsertado, BloqueHorarioEntity bloqueEvaluar);
     List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc);
     boolean esCompatible (String nrc , List<BloqueHorarioEntity> horarioActual);
@@ -17,5 +18,6 @@ public interface HorarioService {
     List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId);
     List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios);
     Map<String,String> mostrarHorario (List<BloqueHorarioEntity> horario);
+    List<BloqueHorarioEntity> obtenerListaUnica(List<BloqueHorarioEntity> horario);
 
 }

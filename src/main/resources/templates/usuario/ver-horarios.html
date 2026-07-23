@@ -201,6 +201,39 @@
 
                 </table>
 
+                <div class="espacio-detalles">
+
+                    <h3>Cursos y NRC principales</h3>
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Curso</th>
+                                <th>Nrc</th>
+
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr th:each="info : ${informacion}">
+
+                                <td th:text="${info.nrc.curso.nombre}"></td>
+                                <td th:text="${info.nrc.codigo}"></td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+
             </div>
 
 

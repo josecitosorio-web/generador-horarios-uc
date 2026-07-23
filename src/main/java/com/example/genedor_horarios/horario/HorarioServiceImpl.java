@@ -5,8 +5,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
@@ -20,15 +22,28 @@ import com.example.genedor_horarios.nrc.NrcService;
 @Service
 public class HorarioServiceImpl implements HorarioService {
 
-    private BloqueHorarioRepository bloqueHorarioRepository;
-    private NrcRepository nrcRepository;
-    private NrcService nrcService;
+    private final BloqueHorarioRepository bloqueHorarioRepository;
+    private final NrcRepository nrcRepository;
+    private final NrcService nrcService;
 
     public HorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository,
             NrcService nrcService) {
         this.bloqueHorarioRepository = bloqueHorarioRepository;
         this.nrcRepository = nrcRepository;
         this.nrcService = nrcService;
+    }
+
+    @Override
+    public String validarDatos(List<Long> cursos) {
+
+        if (cursos == null || cursos.size() < 2) {
+
+            return  "Debe elegir como minimo dos cursos";
+
+        }
+
+        return "";
+
     }
 
     @Override
@@ -152,7 +167,7 @@ public class HorarioServiceImpl implements HorarioService {
 
                 Long tiempoMuerto = Duration.between(actual.getHoraFin(), siguiente.getHoraInicio()).toMinutes();
 
-                if(tiempoMuerto > 11) {
+                if (tiempoMuerto > 11) {
 
                     puntaje += tiempoMuerto;
 
@@ -162,14 +177,12 @@ public class HorarioServiceImpl implements HorarioService {
 
         }
 
-        
-
         return puntaje;
 
     }
 
     @Override
-    public List<List<BloqueHorarioEntity>> ordenarPorRanking (List<List<BloqueHorarioEntity>> horarios) {
+    public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios) {
 
         horarios.sort(Comparator.comparing(horario -> calcularHoraMuertas(horario)));
 
@@ -178,10 +191,9 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId) {
+    public List<List<BloqueHorarioEntity>> generadorHorario(List<Long> cursosId) {
 
-
-        List <BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
+        List<BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
 
         List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
 
@@ -196,11 +208,11 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios) {
+    public List<Integer> listHorasMuertas(List<List<BloqueHorarioEntity>> horarios) {
 
         List<Integer> puntajes = new ArrayList<>();
 
-        for(List<BloqueHorarioEntity> horario : horarios) {
+        for (List<BloqueHorarioEntity> horario : horarios) {
 
             puntajes.add(calcularHoraMuertas(horario));
 
@@ -211,13 +223,13 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public Map<String,String> mostrarHorario (List<BloqueHorarioEntity> horario) {
+    public Map<String, String> mostrarHorario(List<BloqueHorarioEntity> horario) {
 
-        Map<String,String> horarioMap = new HashMap<>();
+        Map<String, String> horarioMap = new HashMap<>();
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
 
-        for(BloqueHorarioEntity bloque : horario) {
+        for (BloqueHorarioEntity bloque : horario) {
 
             String horaInicioFormateado = bloque.getHoraInicio().format(formato);
 
@@ -225,10 +237,29 @@ public class HorarioServiceImpl implements HorarioService {
 
             horarioMap.put(clave, bloque.getNrc().getCurso().getNombre());
 
-
         }
 
         return horarioMap;
+
+    }
+
+    @Override
+    public List<BloqueHorarioEntity> obtenerListaUnica(List<BloqueHorarioEntity> horario) {
+
+        Set<String> codigo = new HashSet<>();
+        List<BloqueHorarioEntity> listaUnica = new ArrayList<>();
+
+        for (BloqueHorarioEntity bloque : horario) {
+
+            if (codigo.add(bloque.getNrc().getCodigo())) {
+
+                listaUnica.add(bloque);
+
+            }
+
+        }
+
+        return listaUnica;
 
     }
 
