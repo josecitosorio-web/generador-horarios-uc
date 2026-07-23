@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0.5em 1em;
+
+    border-bottom: 3px solid #e7eaf0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    font-size: 0.6em;
+}
+
+.logo img {
+    width: 20%;
+    height: auto;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+
+    gap: 1em;
+}
+
+.user img{
+    width: 1.5em;
+    height: auto;
+
+    
+
+    background-color: #f7f8fe;
+    border-radius: 50%;
+}
+
+.main-espacio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1em;
+
+    padding: 2em;
+    padding-left: 5em;
+    padding-right: 5em;
+
+    width: 100%;
+}
+
+.espacio-titulo {
+    text-align: center;
+}
+
+.horarios-lista{
+    width: 100%;
+}
+
+.acciones {
+    display: flex;
+
+    gap: 1em;
+
+}
+
+.puesto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   
+    
+    padding: 0.6em ;
+
+    width: 100%;
+
+    border: 3px solid #efefef;
+    border-radius: 1em;
+}
+
+
+.numero {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5em 1em;
+    font-weight: bold;
+
+    border: 4px solid #e7eae9;
+    border-radius: 50%;
+
+}
+
+.horario-titulo{
+    font-size: 1.1em;
+}
+
+.horario-titulo span{
+    font-weight: bold;
+}
+
+.tiempo{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.tiempo p:nth-child(2){
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.acciones{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+
+    
+}
+
+.acciones a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1em;
+
+    text-decoration: none;
+    color: #2e43a7;
+
+    padding: 1em;
+    border: 3px solid #2e43a7;
+    border-radius: 1em;
+
+    transition: all 0.5s;
+
+}
+
+.acciones a:hover{
+    background-color: #2846aa;
+    color: white;
+    transform: scale(1.05);
+}
+
+.acciones img{
+    width: 1.5em;
+    height: auto;
+}
+
+.uno {
+    color: white;
+    font-size: 1.1em;
+    border: 3px solid #f4cf62;
+    background-color: #ffd359;
+}
+
+.dos {
+    color: black;
+    font-size: 1.1em;
+    border: 3px solid #d0d3de;
+    background-color: #ebeff7;
+}
+
+.tres {
+    color: #513c1e;
+    font-size: 1.1em;
+    border: 3px solid #d99252;
+    background-color: #fabb80;
+}
+
+.puesto:nth-child(1) .tiempo p:nth-child(2){
+    color: #70a872;
+}
+
+.puesto:nth-child(2) .tiempo p:nth-child(2){
+    color: #dbc053;
+}
+
+.puesto:nth-child(3) .tiempo p:nth-child(2){
+    color: #f0c672;
+}
+
+.puesto:nth-child(4) .tiempo p:nth-child(2){
+    color: #c84a41;
+}
+
+.puesto:nth-child(5) .tiempo p:nth-child(2){
+    color: #c27071;
+}
+
+.volver{
+    padding: none;
+}
+
+.volver a{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1em;
+    
+
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+
+    background-color: #2846aa;
+    border-radius: 1em;
+
+    transition: all 0.5s;
+}
+
+.volver a:hover{
+    transform: scale(1.05);
+}

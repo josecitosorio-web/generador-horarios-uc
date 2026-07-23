@@ -31,7 +31,7 @@ public class BloqueHorarioController {
         model.addAttribute("dias", DiaSemana.values());
         model.addAttribute("paginaActiva", "bloques");
 
-        return "gestion-bloques";
+        return "admin/gestion-bloques";
 
     }
 
@@ -60,7 +60,7 @@ public class BloqueHorarioController {
         model.addAttribute("dias", DiaSemana.values());
         model.addAttribute("paginaActiva", "bloques");
 
-        return "gestion-bloques";
+        return "admin/gestion-bloques";
 
     }
 
@@ -83,7 +83,7 @@ public class BloqueHorarioController {
         model.addAttribute("paginaActiva", "bloques");
 
 
-        return "gestion-bloques";
+        return "admin/gestion-bloques";
     }
     
 }

@@ -34,7 +34,7 @@ public class HorarioController {
         model.addAttribute("posicion", 0);
         model.addAttribute("paginaActiva", "generador");
 
-        return "generar-horario";
+        return "admin/generar-horario";
 
     }
 
@@ -51,7 +51,7 @@ public class HorarioController {
         model.addAttribute("posicion", 0);
         model.addAttribute("paginaActiva", "generador");
 
-        return "generar-horario";
+        return "admin/generar-horario";
 
 
     }
@@ -70,7 +70,7 @@ public class HorarioController {
         model.addAttribute("paginaActiva", "generador");
 
 
-        return "generar-horario";
+        return "admin/generar-horario";
     }
 
     

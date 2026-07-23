@@ -32,7 +32,7 @@ public class HomeController {
         model.addAttribute("paginaActiva", "home");
 
 
-        return "home";
+        return "admin/home";
 
     }
 

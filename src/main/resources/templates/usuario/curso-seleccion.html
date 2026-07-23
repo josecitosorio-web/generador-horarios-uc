@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/logo.png">
+    <link rel="stylesheet" href="/css/cursos-seleccion.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <title>KAIROS - CURSOS</title>
+</head>
+
+<body>
+
+    <main>
+
+        <div class="header">
+            <div class="logo">
+
+                <img src="/images/logo-head.png" alt="">
+                <h1>KAIROS</h1>
+
+            </div>
+            <div class="user">
+
+                <p th:text="|Hola, ${nombre}|"></p>
+                <img src="/images/usuario.png" alt="">
+
+            </div>
+
+
+        </div>
+        <div class="main-espacio">
+
+            <div class="espacio-titulo">
+
+                <h2>Selecciona los cursos que llevarás este ciclo</h2>
+                <p>Elige los cursos que deseas incluir para generar tus horarios</p>
+
+            </div>
+
+            <div th:if="${error != null}">
+                <div class="error-alert">
+                    <span class="error-icon">⚠️</span>
+                    <span class="error-message" th:text="${error}"></span>
+                </div>
+            </div>
+
+            <form th:action="@{/generar}" method="get">
+                <div class="cursoLista">
+
+                    <label class="input espacio" th:each="curso : ${cursos}">
+
+                        <input type="checkbox" name="cursos" th:value="${curso.id}">
+                        <div class="descripcion">
+
+                            <h5 th:text="${curso.nombre}"></h5>
+                            <p th:text="|CODIGO : ${curso.codigo}|"></p>
+                            <p th:text="|Créditos : ${curso.creditos}|"></p>
+
+                        </div>
+
+                    </label>
+
+
+
+                </div>
+
+                <button type="submit"><img src="/images/calendario.png" alt="">Crear Horarios</button>
+            </form>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

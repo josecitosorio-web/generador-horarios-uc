@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.bienvenida {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1.5em;
+
+    padding-top: 3%;
+    padding-bottom: 1%;
+}
+
+.bienvenida img {
+    width: 80%;
+    height: auto;
+}
+
+.bienvenida p{
+    font-size: 1.3em;
+    color: #58627d;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+
+}
+
+.login h1 {
+    font-size: 2.3em;
+    color: #0c3edd;
+}
+
+.login p {
+    color: #58627d;
+}
+
+.input {
+    display: flex;
+    border: 3px solid #e1e6ec;
+    border-radius: 1em;
+
+    width: 30%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1em;
+
+    width: 100%;
+}
+
+.imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1em 1em;
+}
+
+.input img {
+
+    width: 1.5em;
+    height: auto;
+}
+
+.input input {
+    width: 100%;
+    border: none;
+
+    border-radius: 1em;
+
+    font-size: 1em;
+}
+
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1em;
+
+    width: 30%;
+
+    background-color: #0543d9;
+    border: none;
+    border-radius: 1em;
+    color: white;
+
+    cursor: pointer;
+
+    transition: all 0.8s;
+}
+
+button:hover{
+    transform: scale(1.05);
+}
+
+button span {
+    flex: 2;
+
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+button img {
+    width: 6%;
+    height: auto;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer img {
+    width: 22%;
+    height: auto;
+}
