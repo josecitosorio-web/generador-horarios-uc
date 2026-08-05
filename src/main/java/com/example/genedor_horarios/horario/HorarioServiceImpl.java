@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioRepository;
 import com.example.genedor_horarios.bloqueHorario.DiaSemana;
+import com.example.genedor_horarios.curso.Curso;
+import com.example.genedor_horarios.curso.CursoService;
 import com.example.genedor_horarios.nrc.NrcEntity;
 import com.example.genedor_horarios.nrc.NrcRepository;
 import com.example.genedor_horarios.nrc.NrcService;
@@ -25,22 +27,48 @@ public class HorarioServiceImpl implements HorarioService {
     private final BloqueHorarioRepository bloqueHorarioRepository;
     private final NrcRepository nrcRepository;
     private final NrcService nrcService;
+    private final CursoService cursoService;
 
     public HorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository,
-            NrcService nrcService) {
+            NrcService nrcService, CursoService cursoService) {
         this.bloqueHorarioRepository = bloqueHorarioRepository;
         this.nrcRepository = nrcRepository;
         this.nrcService = nrcService;
+        this.cursoService = cursoService;
     }
 
     @Override
     public String validarDatos(List<Long> cursos) {
 
-        if (cursos == null || cursos.size() < 2) {
+        if (cursos == null) {
 
-            return  "Debe elegir como minimo dos cursos";
+            return  "Debe elegir un curso";
 
         }
+
+        List<Curso> listaCursos = new ArrayList<>();
+
+        for(Long curso : cursos) {
+
+            listaCursos.add(cursoService.buscarPorId(curso));
+
+        }
+
+        int creditos = 0;
+
+        for(Curso curso : listaCursos) {
+
+            creditos += curso.getCreditos();
+
+        }
+
+        if(creditos < 12) {
+
+            return "Debe escoger un mínimo de 12 créditos";
+
+        }
+
+        
 
         return "";
 

@@ -26,7 +26,7 @@ public class HorarioServiceTest {
 
         // ejecutamos el cruce
 
-        HorarioService horarioService = new HorarioServiceImpl(null, null, null);
+        HorarioService horarioService = new HorarioServiceImpl(null, null, null , null);
 
         Boolean resultado = horarioService.tieneCruce(bloqueInsertado, bloqueEvaluado);
 
@@ -47,7 +47,7 @@ public class HorarioServiceTest {
 
         // ejecutamos el cruce
 
-        HorarioService horarioService = new HorarioServiceImpl(null, null, null);
+        HorarioService horarioService = new HorarioServiceImpl(null, null, null , null);
 
 
         Boolean resultado = horarioService.tieneCruce(bloqueInsertado, bloqueEvaluado);
@@ -69,7 +69,7 @@ public class HorarioServiceTest {
 
         // ejecutamos el cruce
 
-        HorarioService horarioService = new HorarioServiceImpl(null, null, null);
+        HorarioService horarioService = new HorarioServiceImpl(null, null, null, null);
 
 
         Boolean resultado = horarioService.tieneCruce(bloqueInsertado, bloqueEvaluado);
@@ -91,7 +91,7 @@ public class HorarioServiceTest {
 
         // ejecutamos el cruce
 
-        HorarioService horarioService = new HorarioServiceImpl(null, null, null);
+        HorarioService horarioService = new HorarioServiceImpl(null, null, null, null);
 
 
         Boolean resultado = horarioService.tieneCruce(bloqueInsertado, bloqueEvaluado);
