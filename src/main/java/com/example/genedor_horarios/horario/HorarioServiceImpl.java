@@ -68,6 +68,12 @@ public class HorarioServiceImpl implements HorarioService {
 
         }
 
+        if(cursos.size() > 6) {
+
+            return "Solo puede escoger como maximo 6 cursos";
+
+        }
+
         
 
         return "";
