@@ -92,6 +92,24 @@ public class UsuarioController {
 
         List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos);
 
+        if (top5.isEmpty()) {
+
+            String nombreUser = (String) session.getAttribute("nombre");
+
+            if (nombreUser == null) {
+
+                return "redirect:/bienvenida";
+
+            }
+
+            model.addAttribute("nombre", nombreUser);
+            model.addAttribute("cursos", cursoService.listarTodos());
+            model.addAttribute("error" , "No se encontró ninguna combinacion paralos horarios");
+
+            return "usuario/curso-seleccion";
+
+        }
+
         session.setAttribute("top5", top5);
         model.addAttribute("horas", horarioService.listHorasMuertas(top5));
         session.setAttribute("horas", horarioService.listHorasMuertas(top5));
@@ -153,5 +171,5 @@ public class UsuarioController {
         return "redirect:/cursos";
 
     }
-
 }
+

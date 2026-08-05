@@ -40,7 +40,7 @@ public class HorarioServiceImpl implements HorarioService {
     @Override
     public String validarDatos(List<Long> cursos) {
 
-        if (cursos == null) {
+        if (cursos == null || cursos.isEmpty()) {
 
             return  "Debe elegir un curso";
 
