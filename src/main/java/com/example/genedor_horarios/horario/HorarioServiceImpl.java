@@ -1,6 +1,7 @@
 package com.example.genedor_horarios.horario;
 
 import java.time.Duration;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -181,6 +182,7 @@ public class HorarioServiceImpl implements HorarioService {
     public int calcularHoraMuertas(List<BloqueHorarioEntity> horario) {
 
         int puntaje = 0;
+        boolean condicionAlmuerzo;
 
         Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = new HashMap<>();
 
@@ -201,7 +203,16 @@ public class HorarioServiceImpl implements HorarioService {
 
                 Long tiempoMuerto = Duration.between(actual.getHoraFin(), siguiente.getHoraInicio()).toMinutes();
 
-                if (tiempoMuerto > 11) {
+                if(actual.getHoraFin().equals(LocalTime.of(13, 29)) && siguiente.getHoraInicio().equals(LocalTime.of(14, 0))){
+
+                    condicionAlmuerzo = true;
+
+                }else {
+                    condicionAlmuerzo = false;
+                }
+                
+
+                if (tiempoMuerto > 11 && !condicionAlmuerzo ) {
 
                     puntaje += tiempoMuerto;
 
