@@ -235,7 +235,9 @@ public class HorarioServiceImpl implements HorarioService {
 
         ordenarPorRanking(listaHorariosElegidos);
 
-        List<List<BloqueHorarioEntity>> top5 = listaHorariosElegidos.subList(0, 5);
+        int fin = Math.min(5, listaHorariosElegidos.size());
+
+        List<List<BloqueHorarioEntity>> top5 = listaHorariosElegidos.subList(0, fin);
 
         return top5;
 
