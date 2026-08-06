@@ -11,4 +11,5 @@ public interface CursoService {
     void eliminarPorId (Long id);
     Long cantidadCurso ();
     
+    
 }

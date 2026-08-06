@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.genedor_horarios.nrc.NrcEntity;
+
 @Service
 public class CursoServiceImpl implements CursoService {
 
@@ -49,5 +51,7 @@ public class CursoServiceImpl implements CursoService {
         return cursoRepository.count();
 
     }
+
+    
     
 }
