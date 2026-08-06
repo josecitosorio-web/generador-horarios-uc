@@ -69,9 +69,9 @@ public class HorarioServiceImpl implements HorarioService {
 
         }
 
-        if(cursos.size() > 6) {
+        if(cursos.size() > 8) {
 
-            return "Solo puede escoger como maximo 6 cursos";
+            return "Kairos permite generar horarios con un máximo de 8 cursos por consulta";
 
         }
 
