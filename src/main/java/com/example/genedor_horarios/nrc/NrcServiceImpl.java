@@ -76,4 +76,17 @@ public class NrcServiceImpl implements NrcService {
         
     }
 
+    @Override
+    public int cantidadNrc (Long id) {
+
+        
+
+        List<NrcEntity> nrcsEncontrados = nrcElegibles(id, true);
+
+        
+
+        return nrcsEncontrados.size();
+
+    }
+
 }

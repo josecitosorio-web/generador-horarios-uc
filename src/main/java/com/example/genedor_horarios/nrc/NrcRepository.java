@@ -11,4 +11,5 @@ public interface NrcRepository extends JpaRepository<NrcEntity, Long> {
     NrcEntity findByCodigo (String codigo);
     List<NrcEntity> findByCursoIdAndEsPrincipal(Long idCurso,Boolean esPrincipal);
     
+    
 }

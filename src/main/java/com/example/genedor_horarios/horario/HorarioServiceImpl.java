@@ -204,7 +204,7 @@ public class HorarioServiceImpl implements HorarioService {
                 Long tiempoMuerto = Duration.between(actual.getHoraFin(), siguiente.getHoraInicio()).toMinutes();
 
                 if(actual.getHoraFin().equals(LocalTime.of(13, 29)) && siguiente.getHoraInicio().equals(LocalTime.of(14, 0))){
-
+                
                     condicionAlmuerzo = true;
 
                 }else {
@@ -238,13 +238,21 @@ public class HorarioServiceImpl implements HorarioService {
     @Override
     public List<List<BloqueHorarioEntity>> generadorHorario(List<Long> cursosId) {
 
+        cursosId.sort(Comparator.comparing(cursoId -> nrcService.cantidadNrc(cursoId)));
+
         List<BloqueHorarioEntity> horarioCandidato = new ArrayList<>();
 
         List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
 
+        long inicio = System.currentTimeMillis();
+
         generarHorariosElegibles(cursosId, horarioCandidato, listaHorariosElegidos);
 
         ordenarPorRanking(listaHorariosElegidos);
+
+        long finEjecucio = System.currentTimeMillis();
+
+        System.out.println("Tiempo de backtracking: " + (finEjecucio - inicio) + " ms");
 
         int fin = Math.min(5, listaHorariosElegidos.size());
 

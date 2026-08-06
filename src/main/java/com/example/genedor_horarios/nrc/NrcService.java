@@ -18,6 +18,8 @@ public interface NrcService {
 
     Long cantidadNrc ();
 
+    int cantidadNrc (Long Id);
+
     
     
 }
