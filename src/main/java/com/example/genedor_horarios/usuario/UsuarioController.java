@@ -60,9 +60,9 @@ public class UsuarioController {
     }
 
     @GetMapping("/generar")
-    public String crearHorario(@RequestParam(required = false) List<Long> cursos, HttpSession session, Model model) {
+    public String crearHorario(@RequestParam(required = false) List<Long> cursos, @RequestParam(required = false) String  preferencia, HttpSession session, Model model) {
 
-        String mensaje = horarioService.validarDatos(cursos);
+        String mensaje = horarioService.validarDatos(cursos,preferencia);
 
         if (!mensaje.isEmpty()) {
 
@@ -82,6 +82,8 @@ public class UsuarioController {
 
         }
 
+        
+
         String nombre = (String) session.getAttribute("nombre");
 
         if (nombre == null) {
@@ -90,7 +92,7 @@ public class UsuarioController {
 
         }
 
-        List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos);
+        List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos, preferencia);
 
         if (top5.isEmpty()) {
 
