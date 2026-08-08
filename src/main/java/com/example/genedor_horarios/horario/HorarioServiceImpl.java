@@ -39,17 +39,23 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public String validarDatos(List<Long> cursos) {
+    public String validarDatos(List<Long> cursos, String preferencia) {
+
+        if (preferencia == null || preferencia.isEmpty()) {
+
+            return "Debe elegir un turno";
+
+        }
 
         if (cursos == null || cursos.isEmpty()) {
 
-            return  "Debe elegir un curso";
+            return "Debe elegir un curso";
 
         }
 
         List<Curso> listaCursos = new ArrayList<>();
 
-        for(Long curso : cursos) {
+        for (Long curso : cursos) {
 
             listaCursos.add(cursoService.buscarPorId(curso));
 
@@ -57,25 +63,23 @@ public class HorarioServiceImpl implements HorarioService {
 
         int creditos = 0;
 
-        for(Curso curso : listaCursos) {
+        for (Curso curso : listaCursos) {
 
             creditos += curso.getCreditos();
 
         }
 
-        if(creditos < 12) {
+        if (creditos < 12) {
 
             return "Debe escoger un mínimo de 12 créditos";
 
         }
 
-        if(cursos.size() > 8) {
+        if (cursos.size() > 8) {
 
             return "Kairos permite generar horarios con un máximo de 8 cursos por consulta";
 
         }
-
-        
 
         return "";
 
@@ -203,16 +207,16 @@ public class HorarioServiceImpl implements HorarioService {
 
                 Long tiempoMuerto = Duration.between(actual.getHoraFin(), siguiente.getHoraInicio()).toMinutes();
 
-                if(actual.getHoraFin().equals(LocalTime.of(13, 29)) && siguiente.getHoraInicio().equals(LocalTime.of(14, 0))){
-                
+                if (actual.getHoraFin().equals(LocalTime.of(13, 29))
+                        && siguiente.getHoraInicio().equals(LocalTime.of(14, 0))) {
+
                     condicionAlmuerzo = true;
 
-                }else {
+                } else {
                     condicionAlmuerzo = false;
                 }
-                
 
-                if (tiempoMuerto > 11 && !condicionAlmuerzo ) {
+                if (tiempoMuerto > 11 && !condicionAlmuerzo) {
 
                     puntaje += tiempoMuerto;
 
@@ -227,16 +231,75 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios) {
+    public int obtenerPuntaje(List<BloqueHorarioEntity> horario, String preferencia) {
 
-        horarios.sort(Comparator.comparing(horario -> calcularHoraMuertas(horario)));
+        int puntaje = 0;
+
+        Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = new HashMap<>();
+
+        for (BloqueHorarioEntity bloque : horario) {
+
+            bloquesPorDia.computeIfAbsent(bloque.getDia(), k -> new ArrayList<>()).add(bloque);
+
+        }
+
+        for (List<BloqueHorarioEntity> bloquesDelDia : bloquesPorDia.values()) {
+
+            bloquesDelDia.sort(Comparator.comparing(BloqueHorarioEntity::getHoraInicio));
+
+            for (int i = 0; i < bloquesDelDia.size(); i++) {
+
+                BloqueHorarioEntity actual = bloquesDelDia.get(i);
+                
+
+                if(preferencia.equals("MANANA")) {
+
+                    if(actual.getHoraFin().isAfter(LocalTime.of(13, 29))){
+
+                        puntaje += 60;
+
+                    }
+
+                }
+
+                if(preferencia.equals("TARDE")){
+
+                    if(actual.getHoraFin().isBefore(LocalTime.of(14, 0))){
+
+                        puntaje += 60;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return puntaje;
+
+    }
+
+    @Override
+    public int puntajeFinal (List<BloqueHorarioEntity> horario, String preferencia) {
+
+        int puntajeFinal = calcularHoraMuertas(horario) + obtenerPuntaje(horario, preferencia);
+
+        return puntajeFinal;
+
+    }
+
+    @Override
+    public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios, String preferencia) {
+
+        horarios.sort(Comparator.comparing(horario -> puntajeFinal(horario, preferencia)));
 
         return horarios;
 
     }
 
     @Override
-    public List<List<BloqueHorarioEntity>> generadorHorario(List<Long> cursosId) {
+    public List<List<BloqueHorarioEntity>> generadorHorario(List<Long> cursosId, String preferencia) {
 
         cursosId.sort(Comparator.comparing(cursoId -> nrcService.cantidadNrc(cursoId)));
 
@@ -244,15 +307,11 @@ public class HorarioServiceImpl implements HorarioService {
 
         List<List<BloqueHorarioEntity>> listaHorariosElegidos = new ArrayList<>();
 
-        long inicio = System.currentTimeMillis();
 
         generarHorariosElegibles(cursosId, horarioCandidato, listaHorariosElegidos);
 
-        ordenarPorRanking(listaHorariosElegidos);
+        ordenarPorRanking(listaHorariosElegidos, preferencia);
 
-        long finEjecucio = System.currentTimeMillis();
-
-        System.out.println("Tiempo de backtracking: " + (finEjecucio - inicio) + " ms");
 
         int fin = Math.min(5, listaHorariosElegidos.size());
 

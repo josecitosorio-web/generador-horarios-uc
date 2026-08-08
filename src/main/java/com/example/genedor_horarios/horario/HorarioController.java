@@ -39,9 +39,9 @@ public class HorarioController {
     }
 
     @GetMapping("/generar")
-    public String crearHorarios (@RequestParam List<Long> cursos,HttpSession session, Model model) {
+    public String crearHorarios (@RequestParam List<Long> cursos,@RequestParam String preferencia,HttpSession session, Model model) {
 
-        List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos);
+        List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos,preferencia);
         List<BloqueHorarioEntity> horarioGanador = top5.get(0);
 
         model.addAttribute("horas", horarioService.listHorasMuertas(top5));

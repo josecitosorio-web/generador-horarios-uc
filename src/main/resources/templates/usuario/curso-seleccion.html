@@ -50,6 +50,42 @@
             </div>
 
             <form th:action="@{/generar}" method="get">
+                <div class="seleccion-preferencia">
+
+                    <div class="preferencias">
+
+                        <p>Preferencia de horario</p>
+
+                        <label class="input espacio">
+
+                            <input type="radio" name="preferencia" value="MANANA">
+                            <div class="descripcion">
+
+                                <img src="/images/manana.png">
+                                <h5>Full Mañana</h5>
+                                <p>07:00 - 13:29</p>
+
+                            </div>
+
+                        </label>
+
+                        <label class="input espacio">
+
+                            <input type="radio" name="preferencia" value="TARDE">
+                            <div class="descripcion">
+
+                                <img src="/images/tarde.png">
+                                <h5>Full Tarde</h5>
+                                <p>14:00 - 21:59</p>
+
+
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
                 <div class="cursoLista">
 
                     <label class="input espacio" th:each="curso : ${cursos}">
