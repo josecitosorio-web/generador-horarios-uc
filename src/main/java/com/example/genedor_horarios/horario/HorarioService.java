@@ -19,7 +19,7 @@ public interface HorarioService {
     List<List<BloqueHorarioEntity>> ordenarPorRanking (List<List<BloqueHorarioEntity>> horarios, String preferencia);
     List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId, String preferencia);
     List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios);
-    Map<String,String> mostrarHorario (List<BloqueHorarioEntity> horario);
+    Map<String,BloqueHorarioEntity> mostrarHorario (List<BloqueHorarioEntity> horario);
     List<BloqueHorarioEntity> obtenerListaUnica(List<BloqueHorarioEntity> horario);
 
 }

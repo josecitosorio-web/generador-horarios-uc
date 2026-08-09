@@ -337,9 +337,9 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public Map<String, String> mostrarHorario(List<BloqueHorarioEntity> horario) {
+    public Map<String, BloqueHorarioEntity> mostrarHorario(List<BloqueHorarioEntity> horario) {
 
-        Map<String, String> horarioMap = new HashMap<>();
+        Map<String, BloqueHorarioEntity> horarioMap = new HashMap<>();
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -349,7 +349,7 @@ public class HorarioServiceImpl implements HorarioService {
 
             String clave = bloque.getDia().toString() + "-" + horaInicioFormateado;
 
-            horarioMap.put(clave, bloque.getNrc().getCurso().getNombre());
+            horarioMap.put(clave, bloque);
 
         }
 
