@@ -182,11 +182,7 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
-    @Override
-    public int calcularHoraMuertas(List<BloqueHorarioEntity> horario) {
-
-        int puntaje = 0;
-        boolean condicionAlmuerzo;
+    public static Map<DiaSemana, List<BloqueHorarioEntity>> agruparYordenarPorDia (List<BloqueHorarioEntity> horario) {
 
         Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = new HashMap<>();
 
@@ -199,6 +195,22 @@ public class HorarioServiceImpl implements HorarioService {
         for (List<BloqueHorarioEntity> bloquesDelDia : bloquesPorDia.values()) {
 
             bloquesDelDia.sort(Comparator.comparing(BloqueHorarioEntity::getHoraInicio));
+
+        }
+
+        return bloquesPorDia;
+
+    }
+
+    @Override
+    public int calcularHoraMuertas(List<BloqueHorarioEntity> horario, String preferencia) {
+
+        int puntaje = 0;
+        boolean condicionAlmuerzo;
+
+        Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = agruparYordenarPorDia(horario);
+
+        for (List<BloqueHorarioEntity> bloquesDelDia : bloquesPorDia.values()) {
 
             for (int i = 0; i < bloquesDelDia.size() - 1; i++) {
 
@@ -223,29 +235,6 @@ public class HorarioServiceImpl implements HorarioService {
                 }
 
             }
-
-        }
-
-        return puntaje;
-
-    }
-
-    @Override
-    public int obtenerPuntaje(List<BloqueHorarioEntity> horario, String preferencia) {
-
-        int puntaje = 0;
-
-        Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = new HashMap<>();
-
-        for (BloqueHorarioEntity bloque : horario) {
-
-            bloquesPorDia.computeIfAbsent(bloque.getDia(), k -> new ArrayList<>()).add(bloque);
-
-        }
-
-        for (List<BloqueHorarioEntity> bloquesDelDia : bloquesPorDia.values()) {
-
-            bloquesDelDia.sort(Comparator.comparing(BloqueHorarioEntity::getHoraInicio));
 
             for (int i = 0; i < bloquesDelDia.size(); i++) {
 
@@ -280,19 +269,11 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
-    @Override
-    public int puntajeFinal (List<BloqueHorarioEntity> horario, String preferencia) {
-
-        int puntajeFinal = calcularHoraMuertas(horario) + obtenerPuntaje(horario, preferencia);
-
-        return puntajeFinal;
-
-    }
 
     @Override
     public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios, String preferencia) {
 
-        horarios.sort(Comparator.comparing(horario -> puntajeFinal(horario, preferencia)));
+        horarios.sort(Comparator.comparing(horario -> calcularHoraMuertas(horario, preferencia)));
 
         return horarios;
 
@@ -322,13 +303,13 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<Integer> listHorasMuertas(List<List<BloqueHorarioEntity>> horarios) {
+    public List<Integer> listHorasMuertas(List<List<BloqueHorarioEntity>> horarios, String preferencia) {
 
         List<Integer> puntajes = new ArrayList<>();
 
         for (List<BloqueHorarioEntity> horario : horarios) {
 
-            puntajes.add(calcularHoraMuertas(horario));
+            puntajes.add(calcularHoraMuertas(horario, preferencia));
 
         }
 

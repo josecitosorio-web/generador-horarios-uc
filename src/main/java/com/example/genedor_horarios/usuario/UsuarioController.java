@@ -113,8 +113,8 @@ public class UsuarioController {
         }
 
         session.setAttribute("top5", top5);
-        model.addAttribute("horas", horarioService.listHorasMuertas(top5));
-        session.setAttribute("horas", horarioService.listHorasMuertas(top5));
+        model.addAttribute("horas", horarioService.listHorasMuertas(top5,preferencia));
+        session.setAttribute("horas", horarioService.listHorasMuertas(top5,preferencia));
         model.addAttribute("nombre", nombre);
 
         return "usuario/lista-horarios";

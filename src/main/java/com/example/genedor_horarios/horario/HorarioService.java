@@ -13,12 +13,10 @@ public interface HorarioService {
     List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc);
     boolean esCompatible (String nrc , List<BloqueHorarioEntity> horarioActual);
     void generarHorariosElegibles (List<Long> cursosId , List <BloqueHorarioEntity> horarioCndidato, List<List<BloqueHorarioEntity>> listaHorariosElegidos);
-    int calcularHoraMuertas (List<BloqueHorarioEntity> horario);
-    int obtenerPuntaje (List<BloqueHorarioEntity> horario, String preferencia);
-    int puntajeFinal (List<BloqueHorarioEntity> horario, String preferencia);
+    int calcularHoraMuertas (List<BloqueHorarioEntity> horario, String preferencia);
     List<List<BloqueHorarioEntity>> ordenarPorRanking (List<List<BloqueHorarioEntity>> horarios, String preferencia);
     List<List<BloqueHorarioEntity>> generadorHorario (List<Long> cursosId, String preferencia);
-    List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios);
+    List<Integer> listHorasMuertas (List<List<BloqueHorarioEntity>> horarios, String preferencia);
     Map<String,BloqueHorarioEntity> mostrarHorario (List<BloqueHorarioEntity> horario);
     List<BloqueHorarioEntity> obtenerListaUnica(List<BloqueHorarioEntity> horario);
 

@@ -44,7 +44,10 @@ public class HorarioController {
         List<List<BloqueHorarioEntity>> top5 = horarioService.generadorHorario(cursos,preferencia);
         List<BloqueHorarioEntity> horarioGanador = top5.get(0);
 
-        model.addAttribute("horas", horarioService.listHorasMuertas(top5));
+        List<Integer> listaHorasMuertas =  horarioService.listHorasMuertas(top5, preferencia);
+
+        model.addAttribute("horas", listaHorasMuertas);
+        session.setAttribute("listaHorasMuertas", listaHorasMuertas);
         model.addAttribute("cursos", cursoService.listarTodos());
         model.addAttribute("horarioMap", horarioService.mostrarHorario(horarioGanador));
         session.setAttribute("top5", top5);
@@ -63,7 +66,7 @@ public class HorarioController {
         List<List<BloqueHorarioEntity>> top5 = (List<List<BloqueHorarioEntity>>) session.getAttribute("top5");
         List<BloqueHorarioEntity> horarioEscogido = top5.get(posicion);
 
-        model.addAttribute("horas", horarioService.listHorasMuertas(top5));
+        model.addAttribute("horas", (List<Integer>) session.getAttribute("listaHorasMuertas"));
         model.addAttribute("cursos", cursoService.listarTodos());
         model.addAttribute("horarioMap", horarioService.mostrarHorario(horarioEscogido));
         model.addAttribute("posicion", posicion);
