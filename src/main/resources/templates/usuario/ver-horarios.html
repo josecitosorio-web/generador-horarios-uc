@@ -62,156 +62,723 @@
                     <tbody>
                         <tr>
                             <td>07:00 - 08:29</td>
-                            <td th:text="${horarioMap['LUNES-07:00'] != null ? horarioMap['LUNES-07:00'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-07:00'] != null ? horarioMap['MARTES-07:00'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-07:00'] != null ? horarioMap['MIERCOLES-07:00'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-07:00'] != null ? horarioMap['JUEVES-07:00'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-07:00'] != null ? horarioMap['VIERNES-07:00'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-07:00'] != null ? horarioMap['SABADO-07:00'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-07:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-07:00'] != null ? horarioMap['DOMINGO-07:00'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-07:00'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-07:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-07:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>08:40 - 10:09</td>
-                            <td th:text="${horarioMap['LUNES-08:40'] != null ? horarioMap['LUNES-08:40'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-08:40'] != null ? horarioMap['MARTES-08:40'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-08:40'] != null ? horarioMap['MIERCOLES-08:40'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-08:40'] != null ? horarioMap['JUEVES-08:40'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-08:40'] != null ? horarioMap['VIERNES-08:40'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-08:40'] != null ? horarioMap['SABADO-08:40'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-08:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-08:40'] != null ? horarioMap['DOMINGO-08:40'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-08:40'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-08:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-08:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>10:20 - 11:49</td>
-                            <td th:text="${horarioMap['LUNES-10:20'] != null ? horarioMap['LUNES-10:20'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-10:20'] != null ? horarioMap['MARTES-10:20'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-10:20'] != null ? horarioMap['MIERCOLES-10:20'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-10:20'] != null ? horarioMap['JUEVES-10:20'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-10:20'] != null ? horarioMap['VIERNES-10:20'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-10:20'] != null ? horarioMap['SABADO-10:20'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-10:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-10:20'] != null ? horarioMap['DOMINGO-10:20'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-10:20'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-10:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-10:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>12:00 - 13:29</td>
-                            <td th:text="${horarioMap['LUNES-12:00'] != null ? horarioMap['LUNES-12:00'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-12:00'] != null ? horarioMap['MARTES-12:00'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-12:00'] != null ? horarioMap['MIERCOLES-12:00'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-12:00'] != null ? horarioMap['JUEVES-12:00'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-12:00'] != null ? horarioMap['VIERNES-12:00'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-12:00'] != null ? horarioMap['SABADO-12:00'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-12:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-12:00'] != null ? horarioMap['DOMINGO-12:00'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-12:00'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-12:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-12:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>14:00 - 15:29</td>
-                            <td th:text="${horarioMap['LUNES-14:00'] != null ? horarioMap['LUNES-14:00'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-14:00'] != null ? horarioMap['MARTES-14:00'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-14:00'] != null ? horarioMap['MIERCOLES-14:00'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-14:00'] != null ? horarioMap['JUEVES-14:00'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-14:00'] != null ? horarioMap['VIERNES-14:00'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-14:00'] != null ? horarioMap['SABADO-14:00'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-14:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-14:00'] != null ? horarioMap['DOMINGO-14:00'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-14:00'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-14:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-14:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>15:40 - 17:09</td>
-                            <td th:text="${horarioMap['LUNES-15:40'] != null ? horarioMap['LUNES-15:40'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-15:40'] != null ? horarioMap['MARTES-15:40'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-15:40'] != null ? horarioMap['MIERCOLES-15:40'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-15:40'] != null ? horarioMap['JUEVES-15:40'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-15:40'] != null ? horarioMap['VIERNES-15:40'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-15:40'] != null ? horarioMap['SABADO-15:40'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-15:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-15:40'] != null ? horarioMap['DOMINGO-15:40'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-15:40'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-15:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-15:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>17:20 - 18:49</td>
-                            <td th:text="${horarioMap['LUNES-17:20'] != null ? horarioMap['LUNES-17:20'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-17:20'] != null ? horarioMap['MARTES-17:20'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-17:20'] != null ? horarioMap['MIERCOLES-17:20'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-17:20'] != null ? horarioMap['JUEVES-17:20'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-17:20'] != null ? horarioMap['VIERNES-17:20'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-17:20'] != null ? horarioMap['SABADO-17:20'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-17:20'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-17:20'] != null ? horarioMap['DOMINGO-17:20'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-17:20'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-17:20'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-17:20']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>19:00 - 20:29</td>
-                            <td th:text="${horarioMap['LUNES-19:00'] != null ? horarioMap['LUNES-19:00'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-19:00'] != null ? horarioMap['MARTES-19:00'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-19:00'] != null ? horarioMap['MIERCOLES-19:00'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-19:00'] != null ? horarioMap['JUEVES-19:00'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-19:00'] != null ? horarioMap['VIERNES-19:00'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-19:00'] != null ? horarioMap['SABADO-19:00'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-19:00'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-19:00'] != null ? horarioMap['DOMINGO-19:00'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-19:00'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-19:00'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-19:00']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>20:40 - 21:59</td>
-                            <td th:text="${horarioMap['LUNES-20:40'] != null ? horarioMap['LUNES-20:40'] : '-' }"
-                                th:classappend="${horarioMap['LUNES-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MARTES-20:40'] != null ? horarioMap['MARTES-20:40'] : '-' }"
-                                th:classappend="${horarioMap['MARTES-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['MIERCOLES-20:40'] != null ? horarioMap['MIERCOLES-20:40'] : '-' }"
-                                th:classappend="${horarioMap['MIERCOLES-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['JUEVES-20:40'] != null ? horarioMap['JUEVES-20:40'] : '-' }"
-                                th:classappend="${horarioMap['JUEVES-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['VIERNES-20:40'] != null ? horarioMap['VIERNES-20:40'] : '-' }"
-                                th:classappend="${horarioMap['VIERNES-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['SABADO-20:40'] != null ? horarioMap['SABADO-20:40'] : '-' }"
-                                th:classappend="${horarioMap['SABADO-20:40'] != null ? 'con-curso' : ''}"></td>
-                            <td th:text="${horarioMap['DOMINGO-20:40'] != null ? horarioMap['DOMINGO-20:40'] : '-' }"
-                                th:classappend="${horarioMap['DOMINGO-20:40'] != null ? 'con-curso' : ''}"></td>
+                            <td th:classappend="${horarioMap['LUNES-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['LUNES-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MARTES-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MARTES-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['MIERCOLES-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['MIERCOLES-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['JUEVES-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['JUEVES-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['VIERNES-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['VIERNES-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['SABADO-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['SABADO-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
+                            <td th:classappend="${horarioMap['DOMINGO-20:40'] != null ? 'con-curso' : ''}"
+                                th:with="bloque=${horarioMap['DOMINGO-20:40']}">
+                                <div th:if="${bloque!=null}">
+                                    <p th:text="${bloque.nrc.curso.nombre}"></p>
+                                    <p th:text="'NRC: ' + ${bloque.nrc.codigo}"></p>
+                                    <p th:text="${bloque.horaInicio} + '-' + ${bloque.horaFin}"></p>
+                                    <p th:text="'Aula: ' + ${bloque.aula}"></p>
+                                    <p th:text="${bloque.nrc.docente}"></p>
+                                </div>
+                                <span th:if="${bloque==null}">-</span>
+                            </td>
                         </tr>
 
                     </tbody>
