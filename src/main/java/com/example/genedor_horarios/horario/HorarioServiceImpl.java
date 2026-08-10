@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -124,7 +125,8 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<BloqueHorarioEntity> esCompatible(String nrc, List<BloqueHorarioEntity> horarioActual, Map<String, List<BloqueHorarioEntity>> bloquesPorNrc) {
+    public List<BloqueHorarioEntity> esCompatible(String nrc, List<BloqueHorarioEntity> horarioActual,
+            Map<String, List<BloqueHorarioEntity>> bloquesPorNrc) {
 
         List<BloqueHorarioEntity> bloquesAEvaluar = bloquesPorNrc.get(nrc);
 
@@ -158,13 +160,13 @@ public class HorarioServiceImpl implements HorarioService {
         Map<Long, List<NrcEntity>> nrcsPorCurso = new HashMap<>();
         Map<String, List<BloqueHorarioEntity>> bloquesPorNrc = new HashMap<>();
 
-        for(Long cursoId : cursosId) {
+        for (Long cursoId : cursosId) {
 
             List<NrcEntity> nrcs = nrcService.nrcElegibles(cursoId, true);
-            
+
             nrcsPorCurso.put(cursoId, nrcs);
 
-            for(NrcEntity nrc : nrcs) {
+            for (NrcEntity nrc : nrcs) {
 
                 List<BloqueHorarioEntity> bloquesHorarios = obtenerTodosLosBloquesPorNrc(nrc.getCodigo());
                 bloquesPorNrc.put(nrc.getCodigo(), bloquesHorarios);
@@ -173,27 +175,46 @@ public class HorarioServiceImpl implements HorarioService {
 
         }
 
-
-        generarHorariosElegibles(cursosId, horarioCandidato, listaHorariosElegidos,nrcsPorCurso,bloquesPorNrc);
+        generarHorariosElegibles(cursosId, horarioCandidato, listaHorariosElegidos, nrcsPorCurso, bloquesPorNrc, preferencia);
 
         ordenarPorRanking(listaHorariosElegidos, preferencia);
 
-
-        int fin = Math.min(5, listaHorariosElegidos.size());
-
-        List<List<BloqueHorarioEntity>> top5 = listaHorariosElegidos.subList(0, fin);
-
-        return top5;
+        
+        return listaHorariosElegidos;
 
     }
 
     @Override
-    public void generarHorariosElegibles(List<Long> cursosId, List<BloqueHorarioEntity> horarioCandidato,
-            List<List<BloqueHorarioEntity>> listaHorariosElegidos ,Map<Long, List<NrcEntity>> nrcsPorCurso,Map<String, List<BloqueHorarioEntity>> bloquesPorNrc) {
+    public void generarHorariosElegibles(
+            List<Long> cursosId, 
+            List<BloqueHorarioEntity> horarioCandidato,
+            List<List<BloqueHorarioEntity>> listaHorariosElegidos, 
+            Map<Long, List<NrcEntity>> nrcsPorCurso,
+            Map<String, List<BloqueHorarioEntity>> bloquesPorNrc, String preferencia) {
 
         if (cursosId.isEmpty()) {
 
-            listaHorariosElegidos.add(new ArrayList<>(horarioCandidato));
+            List<BloqueHorarioEntity> posibleHorario = new ArrayList<>(horarioCandidato);
+
+            if(listaHorariosElegidos.size() < 5) {
+
+                listaHorariosElegidos.add(posibleHorario);
+
+                 return;
+
+            }
+
+            List<BloqueHorarioEntity> peor = Collections.max(listaHorariosElegidos,Comparator.comparing(horario -> calcularHoraMuertas(horario, preferencia)));
+
+            int puntajePeor = calcularHoraMuertas(peor, preferencia);
+            int puntajeEvaluar = calcularHoraMuertas(posibleHorario, preferencia);
+
+            if(puntajeEvaluar < puntajePeor) {
+
+                listaHorariosElegidos.remove(peor);
+                listaHorariosElegidos.add(posibleHorario);
+
+            }
 
             return;
 
@@ -203,7 +224,8 @@ public class HorarioServiceImpl implements HorarioService {
 
         for (NrcEntity nrcElegible : nrcElegibles) {
 
-            List<BloqueHorarioEntity> bloquesSeleccionados = esCompatible(nrcElegible.getCodigo(), horarioCandidato,bloquesPorNrc);
+            List<BloqueHorarioEntity> bloquesSeleccionados = esCompatible(nrcElegible.getCodigo(), horarioCandidato,
+                    bloquesPorNrc);
 
             if (bloquesSeleccionados != null) {
 
@@ -213,7 +235,7 @@ public class HorarioServiceImpl implements HorarioService {
 
                 cursosPendientes.remove(0);
 
-                generarHorariosElegibles(cursosPendientes, horarioCandidato, listaHorariosElegidos, nrcsPorCurso,bloquesPorNrc);
+                generarHorariosElegibles(cursosPendientes, horarioCandidato, listaHorariosElegidos, nrcsPorCurso, bloquesPorNrc, preferencia);
 
                 horarioCandidato.removeAll(bloquesSeleccionados);
 
@@ -223,7 +245,7 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
-    public static Map<DiaSemana, List<BloqueHorarioEntity>> agruparYordenarPorDia (List<BloqueHorarioEntity> horario) {
+    public static Map<DiaSemana, List<BloqueHorarioEntity>> agruparYordenarPorDia(List<BloqueHorarioEntity> horario) {
 
         Map<DiaSemana, List<BloqueHorarioEntity>> bloquesPorDia = new HashMap<>();
 
@@ -280,11 +302,10 @@ public class HorarioServiceImpl implements HorarioService {
             for (int i = 0; i < bloquesDelDia.size(); i++) {
 
                 BloqueHorarioEntity actual = bloquesDelDia.get(i);
-                
 
-                if(preferencia.equals("MANANA")) {
+                if (preferencia.equals("MANANA")) {
 
-                    if(actual.getHoraFin().isAfter(LocalTime.of(13, 29))){
+                    if (actual.getHoraFin().isAfter(LocalTime.of(13, 29))) {
 
                         puntaje += 60;
 
@@ -292,9 +313,9 @@ public class HorarioServiceImpl implements HorarioService {
 
                 }
 
-                if(preferencia.equals("TARDE")){
+                if (preferencia.equals("TARDE")) {
 
-                    if(actual.getHoraFin().isBefore(LocalTime.of(14, 0))){
+                    if (actual.getHoraFin().isBefore(LocalTime.of(14, 0))) {
 
                         puntaje += 60;
 
@@ -310,16 +331,15 @@ public class HorarioServiceImpl implements HorarioService {
 
     }
 
-
     @Override
-    public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios, String preferencia) {
+    public List<List<BloqueHorarioEntity>> ordenarPorRanking(List<List<BloqueHorarioEntity>> horarios,
+            String preferencia) {
 
         horarios.sort(Comparator.comparing(horario -> calcularHoraMuertas(horario, preferencia)));
 
         return horarios;
 
     }
-    
 
     @Override
     public List<Integer> listHorasMuertas(List<List<BloqueHorarioEntity>> horarios, String preferencia) {
