@@ -15,7 +15,6 @@ public class BloqueHorarioAdapter {
         model.setDia(entity.getDia());
         model.setHoraInicio(entity.getHoraInicio());
         model.setHoraFin(entity.getHoraFin());
-        model.setAula(entity.getAula());
         model.setNrc(NrcAdapter.toModel(entity.getNrc()));
 
         return model;
@@ -29,7 +28,6 @@ public class BloqueHorarioAdapter {
         entity.setDia(model.getDia());
         entity.setHoraInicio(model.getHoraInicio());
         entity.setHoraFin(model.getHoraFin());
-        entity.setAula(model.getAula());
         entity.setNrc(NrcAdapter.toEntity(model.getNrc()));
 
         return entity;

@@ -21,3 +21,4 @@ Las relaciones que se plantearán es una aproximación al proceso original, para
 - **NRC -> NRC :** Un NRC puede estar ligado a otro NRC, pero un NRC solo esta ligado a un solo NRC (relación 1:N).
 - **NRC -> BloqueHorario :** Un NRC puede tener varios bloques de horario, pero un bloque de horario pertenece a un solo NRC (relación 1:N). 
 - **BloqueHorario -> Aula/Ambiente :** Un bloque horario esta relacionado a un solo aula/ambiente, pero un aula/ambiente esta realacionado a varios bloques de horario (relación 1:N).
+- **Docente -> Nrc :** Un docente puede dictar varios NRCs, pero un NRC puede ser dictado solo por un docente

@@ -3,6 +3,7 @@ package com.example.genedor_horarios.curso;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.genedor_horarios.docenteCurso.DocenteCursoEntity;
 import com.example.genedor_horarios.nrc.NrcEntity;
 
 import jakarta.persistence.Column;
@@ -28,17 +29,24 @@ public class CursoEntity {
     @Column(name = "creditos")
     private Integer creditos;
 
+    @Column(name = "horas")
+    private Integer horas;
+
     @OneToMany(mappedBy = "curso")
     private List<NrcEntity> nrcs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "curso")
+    private List<DocenteCursoEntity> docenteCursos = new ArrayList<>();
 
     public CursoEntity () {}
 
 
-    public CursoEntity (String codigo, String nombre, Integer creditos) {
+    public CursoEntity (String codigo, String nombre, Integer creditos, Integer horas) {
 
         this.codigo = codigo;
         this.nombre = nombre;
         this.creditos = creditos;
+        this.horas = horas;
 
     }
 
@@ -53,6 +61,12 @@ public class CursoEntity {
 
     public void setNombre(String nombre) { this.nombre = nombre;}
     public void setCreditos(Integer creditos) { this.creditos = creditos;}
+
+    public Integer getHoras() {return this.horas;}
+    public void setHoras(Integer horas) {this.horas = horas;}
+
+    public List<DocenteCursoEntity> getDocenteCursos() {return this.docenteCursos;}
+    public void setDocentesCursos(List<DocenteCursoEntity> docenteCursos) {this.docenteCursos = docenteCursos;}
     
     public List<NrcEntity> getNrcs() { return this.nrcs; }
     public void setNrcs(List<NrcEntity> nrcs) { this.nrcs = nrcs; }

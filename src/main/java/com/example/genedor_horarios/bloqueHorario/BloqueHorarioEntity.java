@@ -2,6 +2,7 @@ package com.example.genedor_horarios.bloqueHorario;
 
 import java.time.LocalTime;
 
+import com.example.genedor_horarios.aulaAmbiente.AulaAmbienteEntity;
 import com.example.genedor_horarios.nrc.NrcEntity;
 
 import jakarta.persistence.Column;
@@ -31,22 +32,23 @@ public class BloqueHorarioEntity {
     @Column(name = "hora_fin")
     private LocalTime horaFin;
 
-    @Column(name = "aula")
-    private String aula;
-
     @ManyToOne
     @JoinColumn(name = "nrc_id")
     private NrcEntity nrc;
 
+    @ManyToOne
+    @JoinColumn(name = "aula_ambiente_id")
+    private AulaAmbienteEntity aulaAmbiente;
+
     public BloqueHorarioEntity () {}
 
-    public BloqueHorarioEntity (DiaSemana dia, LocalTime horaInicio, LocalTime horaFin, String aula, NrcEntity nrc) {
+    public BloqueHorarioEntity (DiaSemana dia, LocalTime horaInicio, LocalTime horaFin, NrcEntity nrc, AulaAmbienteEntity aulaAmbiente) {
 
         this.dia = dia;
         this.horaInicio = horaInicio;
         this.horaFin = horaFin;
-        this.aula = aula;
         this.nrc = nrc;
+        this.aulaAmbiente = aulaAmbiente;
 
     }
 
@@ -62,10 +64,10 @@ public class BloqueHorarioEntity {
     public LocalTime getHoraFin () {return this.horaFin;}
     public void setHoraFin (LocalTime horaFin) {this.horaFin = horaFin;}
 
-    public String getAula () {return this.aula;}
-    public void setAula (String aula) {this.aula = aula;}
-
     public NrcEntity getNrc () { return this.nrc;}
     public void setNrc (NrcEntity nrc) { this.nrc = nrc;}
+
+    public AulaAmbienteEntity getaulaAmbiente () {return this.aulaAmbiente;}
+    public void setAulaAmbiente (AulaAmbienteEntity aulaAmbiente) {this.aulaAmbiente = aulaAmbiente; }
 
 }

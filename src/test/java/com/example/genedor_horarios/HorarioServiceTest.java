@@ -20,9 +20,9 @@ public class HorarioServiceTest {
         // preparamos los dos bloques de prueba uno insertado y el otro no
 
         BloqueHorarioEntity bloqueInsertado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 0),
-                LocalTime.of(10, 0), "H103", null);
+                LocalTime.of(10, 0), null, null);
         BloqueHorarioEntity bloqueEvaluado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 30),
-                LocalTime.of(10, 30), "J402", null);
+                LocalTime.of(10, 30), null, null);
 
         // ejecutamos el cruce
 
@@ -41,9 +41,9 @@ public class HorarioServiceTest {
 
         // preparamos los dos bloques de prueba uno insertao y el otro no
         BloqueHorarioEntity bloqueInsertado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 0),
-                LocalTime.of(10, 0), "H103", null);
+                LocalTime.of(10, 0), null, null);
         BloqueHorarioEntity bloqueEvaluado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(10, 00),
-                LocalTime.of(11, 00), "J402", null);
+                LocalTime.of(11, 00), null, null);
 
         // ejecutamos el cruce
 
@@ -63,9 +63,9 @@ public class HorarioServiceTest {
 
         // preparamos los dos bloques de prueba uno insertao y el otro no
         BloqueHorarioEntity bloqueInsertado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 0),
-                LocalTime.of(10, 0), "H103", null);
+                LocalTime.of(10, 0), null, null);
         BloqueHorarioEntity bloqueEvaluado = new BloqueHorarioEntity(DiaSemana.MARTES, LocalTime.of(9, 30),
-                LocalTime.of(10, 30), "J402", null);
+                LocalTime.of(10, 30),null, null);
 
         // ejecutamos el cruce
 
@@ -85,9 +85,9 @@ public class HorarioServiceTest {
 
         // preparamos los dos bloques de prueba uno insertao y el otro no
         BloqueHorarioEntity bloqueInsertado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 0),
-                LocalTime.of(11, 0), "H103", null);
+                LocalTime.of(11, 0), null, null);
         BloqueHorarioEntity bloqueEvaluado = new BloqueHorarioEntity(DiaSemana.LUNES, LocalTime.of(9, 30),
-                LocalTime.of(10, 30), "J402", null);
+                LocalTime.of(10, 30), null, null);
 
         // ejecutamos el cruce
 

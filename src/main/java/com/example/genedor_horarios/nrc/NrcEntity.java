@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 import com.example.genedor_horarios.curso.CursoEntity;
+import com.example.genedor_horarios.docente.DocenteEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,9 +26,6 @@ public class NrcEntity {
     @Column(name = "codigo")
     private String codigo;
 
-    @Column(name = "docente")
-    private String docente;
-
     @Column(name = "modalidad")
     private String modalidad;
 
@@ -37,6 +35,10 @@ public class NrcEntity {
     @ManyToOne
     @JoinColumn(name = "curso_id")
     private CursoEntity curso;
+
+    @ManyToOne
+    @JoinColumn(name = "docente_id")
+    private DocenteEntity docente;
 
     @OneToMany(mappedBy = "nrc")
     private List<BloqueHorarioEntity> bloques = new ArrayList<>();
@@ -48,13 +50,13 @@ public class NrcEntity {
 
     public NrcEntity() {}
 
-    public NrcEntity (String codigo,String docente, String modalidad, Boolean esPrincipal, CursoEntity curso) {
+    public NrcEntity (String codigo, String modalidad, Boolean esPrincipal, CursoEntity curso, DocenteEntity docente) {
 
         this.codigo = codigo;
-        this.docente = docente;
         this.modalidad = modalidad;
         this.esPrincipal = esPrincipal;
         this.curso = curso;
+        this.docente = docente;
 
     }
 
@@ -63,9 +65,6 @@ public class NrcEntity {
 
     public String getCodigo() {return this.codigo;}
     public void setCodigo(String codigo) { this.codigo = codigo;}
-
-    public String getDocente() {return this.docente;}
-    public void setDocente(String docente) { this.docente = docente;}
 
     public String getModalidad() {return this.modalidad;}
     public void setModalidad(String modalidad) { this.modalidad = modalidad;}
@@ -81,6 +80,9 @@ public class NrcEntity {
 
     public NrcEntity getNrcVinculado() { return this.nrcVinculado;}
     public void setNrcVinculado(NrcEntity nrcVinculado) { this.nrcVinculado = nrcVinculado;}
+
+    public DocenteEntity getDocente () {return this.docente;}
+    public void setDocente(DocenteEntity docente) {this.docente = docente;}
 
     
 }

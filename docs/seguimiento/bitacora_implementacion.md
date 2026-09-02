@@ -1,0 +1,23 @@
+# BITÁCORA DE DESARROLLO - KAIROS V2
+
+## 31/08/2026
+### Realizado
+- Se hizo la creación de una nueva base de datos llamado kairos_v2 en pgAdmin
+- Se hizo el cambio de conexion a la nueva base de datos en application.propoerties
+- Creación de la nueva entidad **DOCENTE**
+- Creación de la entidad intermediadia **DOCENTECURSO**
+- Creación de la relación 1:N de la entidad **DOCENTE** hacia la entidad **DOCENTECURSO**
+- Modificación y/o actualización de la entidad **CURSO** en base al nuevo modelo de base de datos (agregación del atributo horas)
+- Creación de la realación 1:N de la entidad **CURSO** hacia la entidad **DOCENTECURSO**
+- Edicion de la entidad **NRC** en base al nuevo modelo de base de datos
+- Verificación de mantenibilidad de las relaciones de la entidad **NRC** con las identidades **CURSO** y **BLOQUE HORARIO**
+
+## 02/09/2026
+### Realizado
+- Cambio y actualización del adapter de la entidad **NrcAdapter**
+- Actualización de la entidad **BloqueHorario** en base al nuevo modelo entidad relacion
+- Creación de la nueva entidad **AulaAmbienteEntity** 
+- Creación de la relación 1:N de la entidad **AulaAmbiente** con la entidad **BloqueHorario**
+- Correción y actualización de las pruebas realizadas al motor de busqueda en base al nuevo constructor de **BloqueHorario**
+- Correción del modelo de base de datos
+- Creación de la nueva relacion de 1:N de la entidad **Docente** hacia la entidad **Nrc**

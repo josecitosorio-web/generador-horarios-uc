@@ -14,7 +14,6 @@ public class NrcAdapter {
         Nrc model = new Nrc();
         model.setId(entity.getId());
         model.setCodigo(entity.getCodigo());
-        model.setDocente(entity.getDocente());
         model.setModalidad(entity.getModalidad());
         model.setEsPrincipal(entity.getEsPrincipal());
         model.setCurso(CursoAdapter.toModel(entity.getCurso()));
@@ -29,7 +28,6 @@ public class NrcAdapter {
         NrcEntity entity = new NrcEntity();
         entity.setId(model.getId());
         entity.setCodigo(model.getCodigo());
-        entity.setDocente(model.getDocente());
         entity.setModalidad(model.getModalidad());
         entity.setEsPrincipal(model.getEsPrincipal());
         entity.setCurso(CursoAdapter.toEntity(model.getCurso()));
