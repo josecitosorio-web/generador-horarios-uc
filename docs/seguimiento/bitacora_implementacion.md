@@ -21,3 +21,18 @@
 - Correción y actualización de las pruebas realizadas al motor de busqueda en base al nuevo constructor de **BloqueHorario**
 - Correción del modelo de base de datos
 - Creación de la nueva relacion de 1:N de la entidad **Docente** hacia la entidad **Nrc**
+
+## 05/09/2026
+### Realizado
+- creación del controlador para el campo aula-ambiente
+- creación de la interfaz del servicio de aula-ambiente
+- creación de la implementacion del servicio de aula-ambiente
+- creación del modelo de aula-ambiente
+- creación del repository de aula-ambiente
+- creación del modelo de docente
+- creación de la interfaz del servicio de docente
+- creación de la implementación del servicio docente
+- creación del controlador para el campo docente
+- creación del repository de docente
+- creación del adapter de aula-ambiente
+- creación del adapter de docente

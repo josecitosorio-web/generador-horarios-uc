@@ -40,6 +40,9 @@ public class AulaAmbienteEntity {
 
     }
 
+    public Long getId() {return this.id;}
+    public void setId(Long id) {this.id=id;}
+
     public String getCodigo() {return this.codigo;}
     public void setCodigo(String codigo) {this.codigo = codigo;}
 
