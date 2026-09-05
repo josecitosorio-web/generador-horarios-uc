@@ -36,3 +36,5 @@
 - creación del repository de docente
 - creación del adapter de aula-ambiente
 - creación del adapter de docente
+- creación del test nrc para la verificación de la persistencia de datos en la nueva base de datos
+- aprendizaje e implemetnacion del uso de **entityManager.flush();** y **entityManager.clear();**
