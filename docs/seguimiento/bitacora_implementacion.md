@@ -38,3 +38,8 @@
 - creación del adapter de docente
 - creación del test nrc para la verificación de la persistencia de datos en la nueva base de datos
 - aprendizaje e implemetnacion del uso de **entityManager.flush();** y **entityManager.clear();**
+
+## 13/09/2026
+### Realizado
+- creación e implementación del service de Docente
+- creación e implementación del service de Aula-Ambiente

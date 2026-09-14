@@ -11,7 +11,7 @@ El desarrollo se realizará progresivamente, comenzando por la base del sistema 
 
 ---
 
-## Semana 1 — Base del proyecto y entidades
+## Semana 1 — Base del proyecto y entidades (FINALIZADO)
 
 **Periodo:** 29 de agosto – 4 de septiembre
 
@@ -39,7 +39,7 @@ Contar con la estructura inicial del sistema y las entidades principales funcion
 
 ---
 
-## Semana 2 — Relaciones y persistencia
+## Semana 2 — Relaciones y persistencia (FINALIZADO)
 
 **Periodo:** 5 – 11 de septiembre
 
