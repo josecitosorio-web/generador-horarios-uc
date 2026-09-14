@@ -45,3 +45,11 @@
 - creación e implementación del service de Aula-Ambiente
 - creación del enum Turno en la carpeta docente para el manejo de disponibilidad de docentes
 - creación de una tabla auxiliar con el uso de Hibernate para el tema de disponibilidad de los docentes
+- creación de la funcionalidad para la carga horario en base a las horas de un docente
+- creacion del model de la entidad DocenteCurso
+- cración del repository de la entidad Docente Curso
+
+## 14/09/2026
+## Realizado
+- creacion del service de asignacion en docentecurso con su respectiva validacion de cursos asignados
+  

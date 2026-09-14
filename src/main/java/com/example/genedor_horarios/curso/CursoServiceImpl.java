@@ -48,8 +48,5 @@ public class CursoServiceImpl implements CursoService {
 
         return cursoRepository.count();
 
-    }
-
-    
-    
+    }   
 }

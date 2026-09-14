@@ -27,6 +27,14 @@ public class DocenteCursoEntity {
 
     public DocenteCursoEntity () {}
 
+    public DocenteCursoEntity ( Long id, DocenteEntity docente, CursoEntity curso) {
+
+        this.id = id;
+        this.docente = docente;
+        this.curso = curso;
+
+    }
+
     public Long getId() { return this.id; }
     public void setId(Long id) { this.id = id; }
 

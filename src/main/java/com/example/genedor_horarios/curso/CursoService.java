@@ -10,6 +10,6 @@ public interface CursoService {
     Curso  buscarPorId (Long id);
     void eliminarPorId (Long id);
     Long cantidadCurso ();
-    
+
     
 }

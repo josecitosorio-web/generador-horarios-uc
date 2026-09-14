@@ -3,6 +3,7 @@ package com.example.genedor_horarios.docente;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import com.example.genedor_horarios.curso.CursoEntity;
 
 @Service 
 public class DocenteServiceImpl implements DocenteService {
@@ -37,6 +38,30 @@ public class DocenteServiceImpl implements DocenteService {
     public void eliminarPorId (Long id){
 
         docenteRepository.deleteById(id);
+
+    }
+
+    @Override 
+    public boolean cargaHorariaCursos (List<CursoEntity> cursos, DocenteEntity docente) {
+
+        int horasTotales = 0;
+        boolean resultado = true;
+
+        for(CursoEntity curso : cursos) {
+
+            horasTotales += curso.getHoras();
+
+        }
+
+        if(horasTotales <= docente.getHorasLaborales()) {
+
+            resultado = false;
+
+        }
+
+
+        return resultado;
+
 
     }
 
