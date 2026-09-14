@@ -43,3 +43,5 @@
 ### Realizado
 - creación e implementación del service de Docente
 - creación e implementación del service de Aula-Ambiente
+- creación del enum Turno en la carpeta docente para el manejo de disponibilidad de docentes
+- creación de una tabla auxiliar con el uso de Hibernate para el tema de disponibilidad de los docentes
