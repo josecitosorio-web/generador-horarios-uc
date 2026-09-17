@@ -11,7 +11,7 @@ Los requerimientos redactado a continuación estaran relacionados en base a sus 
 ## CursoService
 - [X] RF-01: El sistema deberá permitir al administrador registrar los cursos correspondientes a los planes de estudio de la carrera de Ingeniería de Sistemas e Informática.
 - [X] RF-05: El sistema deberá permitir registrar la cantidad de horas de dictado requeridas para cada curso, de acuerdo con su syllabus.
-- [ ] RN-08: La programación de un curso debe cumplir con la cantidad de horas de dictado establecidas en su syllabus.
+- [X] RN-08: La programación de un curso debe cumplir con la cantidad de horas de dictado establecidas en su syllabus.
 ---
 ## AulaAmbienteService
 - [X] RF-07: El sistema deberá permitir registrar las aulas y ambientes disponibles para la programación.

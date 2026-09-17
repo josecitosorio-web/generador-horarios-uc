@@ -52,4 +52,9 @@
 ## 14/09/2026
 ## Realizado
 - creacion del service de asignacion en docentecurso con su respectiva validacion de cursos asignados
+
+## 17/09/2026
+## Realizado
+- creación a medias del método programacionHorasSyllabus en el CursoService
+- creación final del método de programacionHorasSyllabus en el CursoService
   
