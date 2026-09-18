@@ -15,28 +15,24 @@ import java.util.Set;
 import org.springframework.stereotype.Service;
 
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
-import com.example.genedor_horarios.bloqueHorario.BloqueHorarioRepository;
+import com.example.genedor_horarios.bloqueHorario.BloqueHorarioService;
 import com.example.genedor_horarios.bloqueHorario.DiaSemana;
 import com.example.genedor_horarios.curso.Curso;
 import com.example.genedor_horarios.curso.CursoService;
 import com.example.genedor_horarios.nrc.NrcEntity;
-import com.example.genedor_horarios.nrc.NrcRepository;
 import com.example.genedor_horarios.nrc.NrcService;
 
 @Service
 public class HorarioServiceImpl implements HorarioService {
 
-    private final BloqueHorarioRepository bloqueHorarioRepository;
-    private final NrcRepository nrcRepository;
     private final NrcService nrcService;
     private final CursoService cursoService;
+    private final BloqueHorarioService bloqueHorarioService;
 
-    public HorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository,
-            NrcService nrcService, CursoService cursoService) {
-        this.bloqueHorarioRepository = bloqueHorarioRepository;
-        this.nrcRepository = nrcRepository;
+    public HorarioServiceImpl(NrcService nrcService, CursoService cursoService, BloqueHorarioService bloqueHorarioService) {
         this.nrcService = nrcService;
         this.cursoService = cursoService;
+        this.bloqueHorarioService = bloqueHorarioService;
     }
 
     @Override
@@ -105,26 +101,6 @@ public class HorarioServiceImpl implements HorarioService {
     }
 
     @Override
-    public List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc) {
-
-        NrcEntity nrcEncontrado = nrcRepository.findByCodigo(nrc);
-
-        if (nrcEncontrado.getNrcVinculado() != null) {
-
-            List<BloqueHorarioEntity> bloquesPrincipales = bloqueHorarioRepository.findByNrcCodigo(nrc);
-            List<BloqueHorarioEntity> bloquesLigados = bloqueHorarioRepository
-                    .findByNrcCodigo(nrcEncontrado.getNrcVinculado().getCodigo());
-
-            bloquesPrincipales.addAll(bloquesLigados);
-
-            return bloquesPrincipales;
-        }
-
-        return bloqueHorarioRepository.findByNrcCodigo(nrc);
-
-    }
-
-    @Override
     public List<BloqueHorarioEntity> esCompatible(String nrc, List<BloqueHorarioEntity> horarioActual,
             Map<String, List<BloqueHorarioEntity>> bloquesPorNrc) {
 
@@ -168,7 +144,7 @@ public class HorarioServiceImpl implements HorarioService {
 
             for (NrcEntity nrc : nrcs) {
 
-                List<BloqueHorarioEntity> bloquesHorarios = obtenerTodosLosBloquesPorNrc(nrc.getCodigo());
+                List<BloqueHorarioEntity> bloquesHorarios = bloqueHorarioService.obtenerTodosLosBloquesPorNrc(nrc.getCodigo());
                 bloquesPorNrc.put(nrc.getCodigo(), bloquesHorarios);
 
             }

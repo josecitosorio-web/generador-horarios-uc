@@ -57,4 +57,5 @@
 ## Realizado
 - creación a medias del método programacionHorasSyllabus en el CursoService
 - creación final del método de programacionHorasSyllabus en el CursoService
-  
+- creación inicial del service de asignarCursosEspecialidad en el NrcService
+- creacíon de las segunda realación reflesiva de nrc a nrc (con el objetivos de que tanto cnrc te´rocio como su practico estén relacionados entre sí)

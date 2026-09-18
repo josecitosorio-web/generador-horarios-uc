@@ -20,6 +20,10 @@ public interface NrcService {
 
     int cantidadNrc (Long Id);
 
+
+    // nuevos services
+    // void asignarCursosEspecialidad (Long idCurso, )
+
     
     
 }

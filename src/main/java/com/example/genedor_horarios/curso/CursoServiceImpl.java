@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.genedor_horarios.horario.HorarioService;
+import com.example.genedor_horarios.bloqueHorario.BloqueHorarioService;
 import com.example.genedor_horarios.nrc.NrcEntity;
 import com.example.genedor_horarios.nrc.NrcRepository;
 
@@ -13,14 +13,14 @@ public class CursoServiceImpl implements CursoService {
 
     private final NrcRepository nrcRepository;
 
-    private final HorarioService horarioService;
-
     private final CursoRepository cursoRepository;
 
-    CursoServiceImpl(CursoRepository cursoRepository, NrcRepository nrcRepository,HorarioService horarioService) {
+    private final BloqueHorarioService bloqueHorarioService;
+
+    public CursoServiceImpl(CursoRepository cursoRepository, NrcRepository nrcRepository, BloqueHorarioService bloqueHorarioService) {
         this.cursoRepository = cursoRepository;
         this.nrcRepository = nrcRepository;
-        this.horarioService = horarioService;
+        this.bloqueHorarioService = bloqueHorarioService;
     }
 
     @Override
@@ -69,11 +69,11 @@ public class CursoServiceImpl implements CursoService {
 
         if(nrcEncontrado.getEsPrincipal()){
 
-            cantidadHoras += horarioService.obtenerTodosLosBloquesPorNrc(nrcEncontrado.getCodigo()).size() * 1.5;
+            cantidadHoras += bloqueHorarioService.obtenerTodosLosBloquesPorNrc(nrcEncontrado.getCodigo()).size() * 1.5;
 
         }else {
 
-            cantidadHoras += horarioService.obtenerTodosLosBloquesPorNrc(nrcEncontrado.getNrcVinculado().getCodigo()).size() * 1.5;
+            cantidadHoras += bloqueHorarioService.obtenerTodosLosBloquesPorNrc(nrcEncontrado.getNrcVinculado().getCodigo()).size() * 1.5;
 
         }
 

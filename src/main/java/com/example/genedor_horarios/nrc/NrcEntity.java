@@ -48,6 +48,10 @@ public class NrcEntity {
     @JoinColumn(name = "nrc_vinculado_id")
     private NrcEntity nrcVinculado;
 
+    // relacion bidireccional : relacion asi mismo pero al reves
+    @OneToMany(mappedBy = "nrcVinculado")
+    private List<NrcEntity> nrcsViculados = new ArrayList<>();
+
     public NrcEntity() {}
 
     public NrcEntity (String codigo, String modalidad, Boolean esPrincipal, CursoEntity curso, DocenteEntity docente) {
@@ -80,6 +84,9 @@ public class NrcEntity {
 
     public NrcEntity getNrcVinculado() { return this.nrcVinculado;}
     public void setNrcVinculado(NrcEntity nrcVinculado) { this.nrcVinculado = nrcVinculado;}
+
+    public List<NrcEntity> getNrcsVicnculados () { return  this.nrcsViculados;}
+    public void setNrcsVinculados( List<NrcEntity> nrcsVinculados) { this.nrcsViculados = nrcsVinculados;}
 
     public DocenteEntity getDocente () {return this.docente;}
     public void setDocente(DocenteEntity docente) {this.docente = docente;}

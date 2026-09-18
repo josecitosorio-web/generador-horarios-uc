@@ -8,23 +8,21 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.example.genedor_horarios.horario.HorarioService;
 import com.example.genedor_horarios.nrc.Nrc;
-import com.example.genedor_horarios.nrc.NrcService;
+import com.example.genedor_horarios.nrc.NrcAdapter;
+import com.example.genedor_horarios.nrc.NrcEntity;
+import com.example.genedor_horarios.nrc.NrcRepository;
 
 @Service
 public class BloqueHorarioServiceImpl implements BloqueHorarioService {
 
-    private final HorarioService horarioService;
     private final BloqueHorarioRepository bloqueHorarioRepository;
-    private final NrcService nrcService;
+    private final NrcRepository nrcRepository;
 
-    public BloqueHorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcService nrcService,HorarioService horarioService ) {
+    public BloqueHorarioServiceImpl(BloqueHorarioRepository bloqueHorarioRepository, NrcRepository nrcRepository) {
 
         this.bloqueHorarioRepository = bloqueHorarioRepository;
-        this.nrcService = nrcService;
-        this.horarioService = horarioService;
-
+        this.nrcRepository = nrcRepository;
     }
 
     @Override
@@ -38,7 +36,8 @@ public class BloqueHorarioServiceImpl implements BloqueHorarioService {
     public void registrarBloque(Long id, DiaSemana dia, LocalTime horaInicio, LocalTime horaFin, String aula,
             String nrcCodigo) {
 
-                Nrc nrc = nrcService.buscarPorCodigo(nrcCodigo);
+                // Nrc nrc = nrcService.buscarPorCodigo(nrcCodigo);
+                Nrc nrc = NrcAdapter.toModel(nrcRepository.findByCodigo(nrcCodigo));
 
                 BloqueHorario bloqueNuevo = new BloqueHorario(id,dia,horaInicio,horaFin,aula,nrc);
 
@@ -66,7 +65,7 @@ public class BloqueHorarioServiceImpl implements BloqueHorarioService {
 
         Map<String,String> horarioMap = new HashMap<>();
 
-        List<BloqueHorarioEntity> bloqueHorarios = horarioService.obtenerTodosLosBloquesPorNrc(nrc);
+        List<BloqueHorarioEntity> bloqueHorarios = obtenerTodosLosBloquesPorNrc(nrc);
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("HH:mm");
 
@@ -88,6 +87,26 @@ public class BloqueHorarioServiceImpl implements BloqueHorarioService {
     public Long cantidadBloque () {
 
         return bloqueHorarioRepository.count();
+
+    }
+
+    @Override
+    public List<BloqueHorarioEntity> obtenerTodosLosBloquesPorNrc(String nrc) {
+
+        NrcEntity nrcEncontrado = nrcRepository.findByCodigo(nrc);
+        
+        if (nrcEncontrado.getNrcVinculado() != null) {
+
+            List<BloqueHorarioEntity> bloquesPrincipales = bloqueHorarioRepository.findByNrcCodigo(nrc);
+            List<BloqueHorarioEntity> bloquesLigados = bloqueHorarioRepository
+                    .findByNrcCodigo(nrcEncontrado.getNrcVinculado().getCodigo());
+
+            bloquesPrincipales.addAll(bloquesLigados);
+
+            return bloquesPrincipales;
+        }
+
+        return bloqueHorarioRepository.findByNrcCodigo(nrc);
 
     }
 
