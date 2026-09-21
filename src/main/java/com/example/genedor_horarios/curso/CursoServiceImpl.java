@@ -59,7 +59,7 @@ public class CursoServiceImpl implements CursoService {
         double cantidadHoras = bloquesCandidatos.size() * 1.5;
 
 
-        if(cantidadHoras != curso.getHoras()) {
+        if(cantidadHoras != curso.getHoras()%2) {
 
             resultado = false;
 

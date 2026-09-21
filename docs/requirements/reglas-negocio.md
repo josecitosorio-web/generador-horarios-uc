@@ -20,3 +20,5 @@ En base a las entrevista que se hicieron a los 3 usuarios se concluyeron las sig
 - **RN-15:** Los bloques horarios del turno noche deben encontrarse dentro del rango de **19:00 a 22:30**.
 
 - **RN-16:** La disponibilidad del docente debe declararse indicando el turno o los turnos en los que tiene disponibilidad: **mañana, tarde o noche**.
+
+- **RN-17:** Las horas del syllabus están expresadas en horas pedagógicas (45 min); 1 hora de reloj equivale a 2 horas pedagógicas

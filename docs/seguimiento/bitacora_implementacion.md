@@ -60,3 +60,12 @@
 - creación inicial del service de asignarCursosEspecialidad en el NrcService
 - creacíon de las segunda realación reflesiva de nrc a nrc (con el objetivos de que tanto nrc teórico como su practico estén relacionados entre sí)
 - replantemiento y reposicionamiento de los service al nivel general por tema de ciclos confusos
+
+
+# 18/09/2026
+## Realizado
+- refactorización del método programacionHorasSyllabus en el CursoService
+
+# 21/09/2026
+## Realizado
+- inclusión de una nueva regla de negocio la cual 1 hora pedagógica equivale a 45 minutos
