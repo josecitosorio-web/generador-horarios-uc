@@ -44,7 +44,7 @@ public class NrcRepositoryTest {
         docente = docenteRepository.save(docente);
 
         // creacion del curso
-        CursoEntity curso = new CursoEntity("ASUC001", "Redes Computadores", 4, 45);
+        CursoEntity curso = new CursoEntity("ASUC001", "Redes Computadores", 4, 1,2);
         curso = cursoRepository.save(curso);
 
         // Creacion del aula ambiente

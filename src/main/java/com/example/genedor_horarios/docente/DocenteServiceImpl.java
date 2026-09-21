@@ -49,8 +49,9 @@ public class DocenteServiceImpl implements DocenteService {
 
         for(CursoEntity curso : cursos) {
 
-            horasTotales += curso.getHoras();
-
+            horasTotales += curso.getHorasPracticas();
+            horasTotales += curso.getHorasTeoricas();
+            
         }
 
         if(horasTotales <= docente.getHorasLaborales()) {

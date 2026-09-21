@@ -69,3 +69,4 @@
 # 21/09/2026
 ## Realizado
 - inclusión de una nueva regla de negocio la cual 1 hora pedagógica equivale a 45 minutos
+- creación de nuevo atributo en la entidad C

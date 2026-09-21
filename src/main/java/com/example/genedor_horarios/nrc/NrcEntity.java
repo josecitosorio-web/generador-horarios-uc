@@ -1,14 +1,20 @@
 package com.example.genedor_horarios.nrc;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.example.genedor_horarios.bloqueHorario.BloqueHorarioEntity;
 import com.example.genedor_horarios.curso.CursoEntity;
 import com.example.genedor_horarios.docente.DocenteEntity;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -52,9 +58,16 @@ public class NrcEntity {
     @OneToMany(mappedBy = "nrcVinculado")
     private List<NrcEntity> nrcsVinculados = new ArrayList<>();
 
-    public NrcEntity() {}
+    @ElementCollection
+    @CollectionTable(name = "curso_tipo", joinColumns = @JoinColumn(name = "curso_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo")
+    private Set<TipoNrc> tipo = new HashSet<>();
 
-    public NrcEntity (String codigo, String modalidad, Boolean esPrincipal, CursoEntity curso, DocenteEntity docente) {
+    public NrcEntity() {
+    }
+
+    public NrcEntity(String codigo, String modalidad, Boolean esPrincipal, CursoEntity curso, DocenteEntity docente) {
 
         this.codigo = codigo;
         this.modalidad = modalidad;
@@ -64,32 +77,84 @@ public class NrcEntity {
 
     }
 
-    public Long getId() {return this.id;}
-    public void setId(Long id) { this.id = id;}
+    public Long getId() {
+        return this.id;
+    }
 
-    public String getCodigo() {return this.codigo;}
-    public void setCodigo(String codigo) { this.codigo = codigo;}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getModalidad() {return this.modalidad;}
-    public void setModalidad(String modalidad) { this.modalidad = modalidad;}
+    public String getCodigo() {
+        return this.codigo;
+    }
 
-    public Boolean getEsPrincipal() {return this.esPrincipal;}
-    public void setEsPrincipal(Boolean esPrincipal) { this.esPrincipal = esPrincipal;}
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
 
-    public CursoEntity getCurso() {return this.curso;}
-    public void setCurso(CursoEntity curso) { this.curso = curso;}
+    public String getModalidad() {
+        return this.modalidad;
+    }
 
-    public List<BloqueHorarioEntity> getBloques() {return this.bloques;}
-    public void setBloques(List<BloqueHorarioEntity> bloques) {this.bloques = bloques;}
+    public void setModalidad(String modalidad) {
+        this.modalidad = modalidad;
+    }
 
-    public NrcEntity getNrcVinculado() { return this.nrcVinculado;}
-    public void setNrcVinculado(NrcEntity nrcVinculado) { this.nrcVinculado = nrcVinculado;}
+    public Boolean getEsPrincipal() {
+        return this.esPrincipal;
+    }
 
-    public List<NrcEntity> getNrcsVinculados () { return  this.nrcsVinculados;}
-    public void setNrcsVinculados( List<NrcEntity> nrcsVinculados) { this.nrcsVinculados = nrcsVinculados;}
+    public void setEsPrincipal(Boolean esPrincipal) {
+        this.esPrincipal = esPrincipal;
+    }
 
-    public DocenteEntity getDocente () {return this.docente;}
-    public void setDocente(DocenteEntity docente) {this.docente = docente;}
+    public CursoEntity getCurso() {
+        return this.curso;
+    }
 
-    
+    public void setCurso(CursoEntity curso) {
+        this.curso = curso;
+    }
+
+    public List<BloqueHorarioEntity> getBloques() {
+        return this.bloques;
+    }
+
+    public void setBloques(List<BloqueHorarioEntity> bloques) {
+        this.bloques = bloques;
+    }
+
+    public NrcEntity getNrcVinculado() {
+        return this.nrcVinculado;
+    }
+
+    public void setNrcVinculado(NrcEntity nrcVinculado) {
+        this.nrcVinculado = nrcVinculado;
+    }
+
+    public List<NrcEntity> getNrcsVinculados() {
+        return this.nrcsVinculados;
+    }
+
+    public void setNrcsVinculados(List<NrcEntity> nrcsVinculados) {
+        this.nrcsVinculados = nrcsVinculados;
+    }
+
+    public DocenteEntity getDocente() {
+        return this.docente;
+    }
+
+    public void setDocente(DocenteEntity docente) {
+        this.docente = docente;
+    }
+
+    public Set<TipoNrc> getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(Set<TipoNrc> tipo) {
+        this.tipo = tipo;
+    }
+
 }
